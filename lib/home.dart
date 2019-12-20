@@ -7,61 +7,25 @@ class home extends StatefulWidget {
 }
 
 class _home_state extends State<home> {
-  static TextEditingController userController = new TextEditingController();
-  static TextEditingController passwordController = new TextEditingController();
-  TextField txf_user = new TextField(
-    keyboardType: TextInputType.number,
-    controller: userController,
-    decoration: new InputDecoration(
-      labelText: "Nick",
-      hintText: "Digite aqui seu nick",
-      //labelStyle: new TextStyle(color: AppColor)
-    ),
-    //style: new TextStyle(color: AppColor, fontSize: 20),
-  );
-  TextField txf_pass = new TextField(
-    keyboardType: TextInputType.number,
-    controller: passwordController,
-    decoration: new InputDecoration(
-      labelText: "Senha",
-      hintText: "Digite aqui sua senha.",
-      //labelStyle: new TextStyle(color: AppColor),
-    ),
-    //style: new TextStyle(color: AppColor, fontSize: 20),
-  );
+  static bool testbool = false;
 
-  static List<Widget> questsToSent = <Widget>[
-    new ListTile(
-      onTap: null,
-      title: new Row(
-        children: <Widget>[
-          new Expanded(child: new Text("Fulano Siclano da Silva")),
-          new Checkbox(value: false, onChanged: (bool value) {})
-        ],
-      ),
-    ),
-    new ListTile(
-      onTap: null,
-      title: new Row(
-        children: <Widget>[
-          new Expanded(child: new Text("Beutrano Beutrame da Silva")),
-          new Checkbox(value: true, onChanged: (bool value) {})
-        ],
-      ),
-    ),
-    new ListTile(
-      onTap: null,
-      title: new Row(
-        children: <Widget>[
-          new Expanded(child: new Text("John Lorem Doe")),
-          new Checkbox(value: true, onChanged: (bool value) {})
-        ],
-      ),
-    )
-  ];
+  List<Widget> _widgetOptions;
+  static List<Widget> _questsOutbox;
+  static List<Widget> _questsList;
+  int _selectedIndex = 0;
 
-  static List<Widget> penddingQuests = <Widget>[
-    new Card(
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  void populateQuestsList() {
+    _questsList = <Widget>[];
+    _questsList.add(new Card(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -90,8 +54,8 @@ class _home_state extends State<home> {
           ),
         ],
       ),
-    ),
-    new Card(
+    ));
+    _questsList.add(new Card(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -120,8 +84,8 @@ class _home_state extends State<home> {
           ),
         ],
       ),
-    ),
-    new Card(
+    ));
+    _questsList.add(new Card(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -150,66 +114,83 @@ class _home_state extends State<home> {
           ),
         ],
       ),
-    )
-  ];
-
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  List<Widget> _widgetOptions = <Widget>[];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    ));
   }
 
-  @override
-  Widget build(BuildContext context) {
+  void populateQuestsOutbox() {
+    _questsOutbox = <Widget>[];
+    _questsOutbox.add(new ListTile(
+      onTap: null,
+      title: new Row(
+        children: <Widget>[
+          new Expanded(child: new Text("Fulano Siclano da Silva")),
+          new Checkbox(
+              value: testbool,
+              onChanged: (bool value) {
+                setState(() {
+                  testbool = value;
+                });
+              })
+        ],
+      ),
+    ));
+    _questsOutbox.add(new ListTile(
+      onTap: null,
+      title: new Row(
+        children: <Widget>[
+          new Expanded(child: new Text("Beutrano Beutrame da Silva")),
+          new Checkbox(value: true, onChanged: (bool value) {})
+        ],
+      ),
+    ));
+    _questsOutbox.add(new ListTile(
+      onTap: null,
+      title: new Row(
+        children: <Widget>[
+          new Expanded(child: new Text("John Lorem Doe")),
+          new Checkbox(value: true, onChanged: (bool value) {})
+        ],
+      ),
+    ));
+  }
+
+  void populateWidgetOptions() {
+    _widgetOptions = <Widget>[];
     _widgetOptions.add(new Scaffold(
       body: new Center(
           child: new Padding(
-            padding: EdgeInsets.all(20),
-            child: new Text(
-              'Toque em + para iniciar um novo questionário.',
-              style: optionStyle,
-            ),
-          )),
+        padding: EdgeInsets.all(20),
+        child: new Text(
+          'Toque em + para iniciar um novo questionário.',
+          style: optionStyle,
+        ),
+      )),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => question()))
-      },
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => question()))
+        },
         tooltip: 'Increment Counter',
         child: const Icon(Icons.add),
       ),
     ));
+    _widgetOptions.add(new Scaffold(
+      body: new Padding(
+          padding: EdgeInsets.all(5),
+          child: new ListView(children: _questsList)),
+    ));
+    _widgetOptions.add(new Scaffold(
+      body: new Padding(
+          padding: EdgeInsets.all(5),
+          child: new ListView(children: _questsOutbox)),
+    ));
+  }
 
-    _widgetOptions.add(new Scaffold(
-      body: new Padding(
-          padding: EdgeInsets.all(5),
-          child: new ListView(children: penddingQuests)),
-    ));
-    _widgetOptions.add(new Scaffold(
-      body: new Padding(
-          padding: EdgeInsets.all(5),
-          child: new ListView(children: questsToSent)),
-    ));
-    _widgetOptions.add(new Scaffold(
-        body: new Padding(
-            padding: EdgeInsets.all(5),
-            child: new Center(
-                child: new ListView(
-                  children: <Widget>[
-                    new RaisedButton(
-                        onPressed: () {},
-                        child: new Text('Disabled Button',
-                            style: TextStyle(fontSize: 20))),
-                    new RaisedButton(
-                        onPressed: () {},
-                        child: new Text('Disabled Button',
-                            style: TextStyle(fontSize: 20))),
-                  ],
-                )))));
+  @override
+  Widget build(BuildContext context) {
+    populateQuestsList();
+    populateQuestsOutbox();
+    populateWidgetOptions();
 
     return Scaffold(
       body: Center(
