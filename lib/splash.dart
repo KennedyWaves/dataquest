@@ -31,8 +31,7 @@ class _splash_state extends State<splash> {
 
   onDoneLoading() async {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => home()));
-    Navigator.of(context)
-        .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+    Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
   }
 }
 

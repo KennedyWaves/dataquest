@@ -8,6 +8,7 @@ void main() {
     home: new splash(),
     routes: <String, WidgetBuilder>{
       '/home': (BuildContext context) => new home(),
+      '/question': (BuildContext context) => new home(),
     },
   ));
 }

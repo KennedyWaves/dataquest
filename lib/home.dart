@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'question.dart';
 
 class home extends StatefulWidget {
   @override
@@ -155,8 +156,17 @@ class _home_state extends State<home> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  List<Widget> _widgetOptions = <Widget>[
-    new Scaffold(
+  List<Widget> _widgetOptions = <Widget>[];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _widgetOptions.add(new Scaffold(
       body: new Center(
           child: new Padding(
             padding: EdgeInsets.all(20),
@@ -167,22 +177,24 @@ class _home_state extends State<home> {
           )),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => question()))
       },
         tooltip: 'Increment Counter',
         child: const Icon(Icons.add),
       ),
-    ),
-    new Scaffold(
+    ));
+
+    _widgetOptions.add(new Scaffold(
       body: new Padding(
           padding: EdgeInsets.all(5),
           child: new ListView(children: penddingQuests)),
-    ),
-    new Scaffold(
+    ));
+    _widgetOptions.add(new Scaffold(
       body: new Padding(
           padding: EdgeInsets.all(5),
           child: new ListView(children: questsToSent)),
-    ),
-    new Scaffold(
+    ));
+    _widgetOptions.add(new Scaffold(
         body: new Padding(
             padding: EdgeInsets.all(5),
             child: new Center(
@@ -197,17 +209,8 @@ class _home_state extends State<home> {
                         child: new Text('Disabled Button',
                             style: TextStyle(fontSize: 20))),
                   ],
-                ))))
-  ];
+                )))));
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
