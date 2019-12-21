@@ -43,82 +43,110 @@ class Eixo1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ListView(
-        children: <Widget>[
-          Container(
-            color: Colors.blue,
-            height: 75,
-            child: Center(
-              child: new Text(
-                "EIXO: SUSTENTABILIDADES E BOM VIVER",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Colors.white,
-                ),
-              ),
+        child: ListView(children: <Widget>[
+      Container(
+        color: Colors.blue,
+        height: 75,
+        child: Center(
+          child: new Text(
+            "EIXO: SUSTENTABILIDADES E BOM VIVER",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Colors.white,
             ),
           ),
-          Container(
-            color: Colors.white,
-            height: 75,
-            margin: EdgeInsets.all(2.0),
-            padding: EdgeInsets.all(6),
-            child: Center(
-              child: new Text(
-                "Marque as questões/indicadores considerando a escala no qual 0 é nunca e 5 é sempre",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-          Container(
-              height: 50,
-              margin: EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 2),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.green,
-              ),
-              child: Center(
-                child: Text(
-                  '1 - QUALIDADE DA MORADIA',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-              )),
-          Container(
-            margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
-            decoration: BoxDecoration(
-              color: Colors.green[50],
-            ),
-            child: Column(mainAxisSize: MainAxisSize.min, children: [
-              // FIRT row (single item)
-              Padding(
-                padding: EdgeInsets.only(bottom: 15, top: 15),
-                child: Text(
-                  '1.1) A estrutura de sua casa é segura?',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-
-              // SECOND row
-              Padding(
-                padding: EdgeInsets.only(bottom: 15, top: 0),
-              ),
-            ]),
-          ),
-        ],
+        ),
       ),
-    );
+      Container(
+        color: Colors.white,
+        height: 75,
+        margin: EdgeInsets.all(2.0),
+        padding: EdgeInsets.all(6),
+        child: Center(
+          child: new Text(
+            "Marque as questões/indicadores considerando a escala no qual 0 é nunca e 5 é sempre",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+      Container(
+          height: 50,
+          margin: EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.green,
+          ),
+          child: Center(
+            child: Text(
+              '1 - QUALIDADE DA MORADIA',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          )),
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.green[50],
+        ),
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          // FIRT row (single item)
+          Padding(
+            padding: EdgeInsets.only(bottom: 15, top: 15),
+            child: Text(
+              '1.1) A estrutura de sua casa é segura?',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+              ),
+            ),
+          ),
+
+          // SECOND row
+          Padding(
+            padding: EdgeInsets.only(bottom: 15, top: 0),
+          ),
+        ]),
+      ),
+      new Center(
+          child: new Row(
+        children: <Widget>[
+          new Radio(value: false, onChanged: (bool value) => {}),
+          new Text("1"),
+          new Padding(padding: EdgeInsets.all(4)),
+          new Radio(
+            value: false,
+            onChanged: (bool value) => {},
+          ),
+          new Text("2"),
+          new Padding(padding: EdgeInsets.all(4)),
+          new Radio(
+            value: false,
+            onChanged: (bool value) => {},
+          ),
+          new Text("3"),
+          Padding(padding: EdgeInsets.all(4)),
+          new Radio(
+            value: false,
+            onChanged: (bool value) => {},
+          ),
+          new Text("4"),
+          new Padding(padding: EdgeInsets.all(4)),
+          new Radio(
+            value: false,
+            onChanged: (bool value) => {},
+          ),
+          new Text("5"),
+        ],
+      ))
+    ]));
   }
 }
 
