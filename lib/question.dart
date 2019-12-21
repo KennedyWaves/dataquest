@@ -96,56 +96,56 @@ class Eixo1 extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.green[50],
         ),
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
-          // FIRT row (single item)
-          Padding(
-            padding: EdgeInsets.only(bottom: 15, top: 15),
-            child: Text(
-              '1.1) A estrutura de sua casa é segura?',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 15),
+              child: Text(
+                '1.1) A estrutura de sua casa é segura?',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
               ),
             ),
-          ),
-
-          // SECOND row
-          Padding(
-            padding: EdgeInsets.only(bottom: 15, top: 0),
-          ),
-        ]),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                children: <Widget>[
+                  new Radio(value: false, onChanged: (bool value) => {}),
+                  new Text("0"),
+                  new Padding(padding: EdgeInsets.all(7)),
+                  new Radio(
+                    value: false,
+                    onChanged: (bool value) => {},
+                  ),
+                  new Text("1"),
+                  new Padding(padding: EdgeInsets.all(7)),
+                  new Radio(
+                    value: false,
+                    onChanged: (bool value) => {},
+                  ),
+                  new Text("2"),
+                  Padding(padding: EdgeInsets.all(7)),
+                  new Radio(
+                    value: false,
+                    onChanged: (bool value) => {},
+                  ),
+                  new Text("3"),
+                  new Padding(padding: EdgeInsets.all(7)),
+                  new Radio(
+                    value: false,
+                    onChanged: (bool value) => {},
+                  ),
+                  new Text("4"),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-      new Center(
-          child: new Row(
-        children: <Widget>[
-          new Radio(value: false, onChanged: (bool value) => {}),
-          new Text("1"),
-          new Padding(padding: EdgeInsets.all(4)),
-          new Radio(
-            value: false,
-            onChanged: (bool value) => {},
-          ),
-          new Text("2"),
-          new Padding(padding: EdgeInsets.all(4)),
-          new Radio(
-            value: false,
-            onChanged: (bool value) => {},
-          ),
-          new Text("3"),
-          Padding(padding: EdgeInsets.all(4)),
-          new Radio(
-            value: false,
-            onChanged: (bool value) => {},
-          ),
-          new Text("4"),
-          new Padding(padding: EdgeInsets.all(4)),
-          new Radio(
-            value: false,
-            onChanged: (bool value) => {},
-          ),
-          new Text("5"),
-        ],
-      ))
     ]));
   }
 }
