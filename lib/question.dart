@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
+@override
 class question extends StatefulWidget {
   @override
   _question_state createState() => _question_state();
 }
+
+// Declare this variable
+int q1p1 = 0;
 
 class _question_state extends State<question> {
   @override
@@ -39,9 +43,16 @@ class _question_state extends State<question> {
   }
 }
 
-class Eixo1 extends StatelessWidget {
+class Eixo1 extends StatefulWidget {
+  @override
+  _Eixo1State createState() => new _Eixo1State();
+}
+
+class _Eixo1State extends State<Eixo1>
+    with AutomaticKeepAliveClientMixin<Eixo1> {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
         child: ListView(children: <Widget>[
       Container(
@@ -66,7 +77,7 @@ class Eixo1 extends StatelessWidget {
         padding: EdgeInsets.all(6),
         child: Center(
           child: new Text(
-            "Marque as questões/indicadores considerando a escala no qual 0 é nunca e 5 é sempre",
+            "Marque as questões/indicadores considerando a escala no qual 0 é nunca e 4 é sempre",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 14,
@@ -97,13 +108,13 @@ class Eixo1 extends StatelessWidget {
           color: Colors.green[50],
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(bottom: 15, top: 15),
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
               child: Text(
-                '1.1) A estrutura de sua casa é segura?',
+                '1.1) A estrutura de sua casa é segura? R $q1p1',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16,
@@ -113,33 +124,92 @@ class Eixo1 extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
               child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  new Radio(value: false, onChanged: (bool value) => {}),
-                  new Text("0"),
-                  new Padding(padding: EdgeInsets.all(7)),
                   new Radio(
-                    value: false,
-                    onChanged: (bool value) => {},
+                    value: 0,
+                    groupValue: q1p1,
+                    onChanged: (T) {
+                      print(T);
+                      setState(() {
+                        q1p1 = T;
+                      });
+                    },
                   ),
-                  new Text("1"),
-                  new Padding(padding: EdgeInsets.all(7)),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
                   new Radio(
-                    value: false,
-                    onChanged: (bool value) => {},
+                    value: 1,
+                    groupValue: q1p1,
+                    onChanged: (T) {
+                      print(T);
+                      setState(() {
+                        q1p1 = T;
+                      });
+                    },
                   ),
-                  new Text("2"),
-                  Padding(padding: EdgeInsets.all(7)),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
                   new Radio(
-                    value: false,
-                    onChanged: (bool value) => {},
+                    value: 2,
+                    groupValue: q1p1,
+                    onChanged: (T) {
+                      print(T);
+                      setState(() {
+                        q1p1 = T;
+                      });
+                    },
                   ),
-                  new Text("3"),
-                  new Padding(padding: EdgeInsets.all(7)),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
                   new Radio(
-                    value: false,
-                    onChanged: (bool value) => {},
+                    value: 3,
+                    groupValue: q1p1,
+                    onChanged: (T) {
+                      print(T);
+                      setState(() {
+                        q1p1 = T;
+                      });
+                    },
                   ),
-                  new Text("4"),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: q1p1,
+                    onChanged: (T) {
+                      print(T);
+                      setState(() {
+                        q1p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
                 ],
               ),
             ),
@@ -148,6 +218,8 @@ class Eixo1 extends StatelessWidget {
       ),
     ]));
   }
+
+  bool get wantKeepAlive => true;
 }
 
 class Eixo2 extends StatelessWidget {
