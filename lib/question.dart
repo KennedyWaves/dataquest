@@ -7087,7 +7087,7 @@ class _Eixo1State extends State<Eixo1>
   bool get wantKeepAlive => true;
 }
 
-//EIXO 1 CONVERTER TO STATEFULWIDGET
+//EIXO 2 CONVERTER TO STATEFULWIDGET
 class Eixo2 extends StatefulWidget {
   @override
   _Eixo2State createState() => _Eixo2State();
@@ -13908,29 +13908,6823 @@ class _Eixo2State extends State<Eixo2>
   bool get wantKeepAlive => true;
 }
 
-class Eixo3 extends StatelessWidget {
+//EIXO 3 CONVERTER TO STATEFULWIDGET
+class Eixo3 extends StatefulWidget {
+  @override
+  _Eixo3State createState() => _Eixo3State();
+}
+
+//EIXO 3
+class _Eixo3State extends State<Eixo3>
+    with AutomaticKeepAliveClientMixin<Eixo3> {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
-      child: ListView(
-        children: <Widget>[
-          Container(
-            color: Colors.purple,
-            height: 50,
-            child: Center(
-              child: new Text(
-                "EIXO: CONSEQUENCIAS AMBIENTAIS",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
+        child: ListView(children: <Widget>[
+      // EIXO NOME
+      Container(
+        color: Colors.blue,
+        height: 75,
+        child: Center(
+          child: new Text(
+            "EIXO: CONSEQUENCIAS AMBIENTAIS",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+      // ENTRADA NOME
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              TextField(
+                  decoration: InputDecoration(
+                      fillColor: Colors.green[50],
+                      filled: true,
+                      icon: Icon(Icons.people),
+                      prefixText: "Nome: ",
+                      border: OutlineInputBorder()),
+                  onChanged: (String value) {
+                    setState(() {
+                      name = '$value';
+                      print(name);
+                    });
+                  }
+                  //controller: controller,
+                  ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
+      //ENTRADA IDADE
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              TextField(
+                  decoration: InputDecoration(
+                      fillColor: Colors.green[50],
+                      filled: true,
+                      icon: Icon(Icons.date_range),
+                      prefixText: "Idade: ",
+                      border: OutlineInputBorder()),
+                  keyboardType: TextInputType.number,
+                  onChanged: (String value) {
+                    setState(() {
+                      idade = '$value';
+                      print('idade $idade');
+                    });
+                  }
+                  //controller: controller,
+                  ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
+      //INFORMATIVO SOBRE ESCALA
+      Container(
+        color: Colors.white,
+        height: 75,
+        margin: EdgeInsets.all(2.0),
+        padding: EdgeInsets.all(6),
+        child: Center(
+          child: new Text(
+            "Marque as questões/indicadores considerando a escala no qual 0 é nunca e 4 é sempre",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+      // TEMA DA PERGUNTA - T1
+      Container(
+          height: 50,
+          margin: EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.green,
+          ),
+          child: Center(
+            child: Text(
+              '1 - BIOINDICADORES',
+              style: TextStyle(
                   color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          )),
+      //
+      //T1 - PERGUNTA1
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.green[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '1.1) Você tem observado alteração na quantidade de algum animal ou inseto? R: $e3t1p1',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
                 ),
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t1p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t1p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t1p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t1p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t1p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-    );
+      //T1 - PERGUNTA2
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.green[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '1.2) Você tem observado alteração na quantidade de algum vegetal ou planta? R: $e3t1p2',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t1p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t1p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t1p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t1p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t1p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //T1 - PERGUNTA3
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.green[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '1.3) O crescimento de plantas e animais tem sido normal na comunidade?  R: $e3t1p3',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t1p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t1p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t1p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t1p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t1p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //T1 - PERGUNTA 4
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.green[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '1.4) A qualidade e a quantidade do pescado se mantém estável?  R: $e3t1p4',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t1p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t1p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t1p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t1p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t1p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //T1 - PERGUNTA 5
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.green[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '1.5) Os bandos de aves tem desaparecido com o passar dos anos? R: $e3t1p5',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t1p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t1p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t1p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t1p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t1p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //T1 - PERGUNTA 6
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.green[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '1.6) As chuvas e tempestades sofreram alteração nos últimos anos? R: $e3t1p6',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t1p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t1p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t1p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t1p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t1p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //T1 - PERGUNTA 7
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.green[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '1.7) O clima/temperatura, na comunidade, mudou nos últimos anos? R: $e3t1p7',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t1p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t1p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t1p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t1p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t1p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //T1 - PERGUNTA 8
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.green[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '1.8) Existem árvores, em sua comunidade, que tem mais de 30 anos?  R: $e3t1p8',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t1p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t1p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t1p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t1p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t1p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //T1 - PERGUNTA 9
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.green[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '1.9) Houve o aumento de lodo, algas, fungos ou mofos na sua comunidade? R: $e3t1p9',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t1p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t1p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t1p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t1p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t1p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //T1 - PERGUNTA 10
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.green[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '1.10) Existem muitos casos de aborto (humanos e animais) na comunidade? R: $e3t1p10',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t1p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t1p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t1p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t1p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t1p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t1p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+
+      // TEMA DA PERGUNTA - T2
+      Container(
+          height: 50,
+          margin: EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.purple,
+          ),
+          child: Center(
+            child: Text(
+              '2 - GEOINDICADORES',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          )),
+      //
+      //t2 - PERGUNTA1
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.purple[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '2.1) A comunidade degrada a natureza (queimada, desmatamento, poluição)? R: $e3t2p1',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t2p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t2p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t2p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t2p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t2p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t2 - PERGUNTA2
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.purple[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '2.2) ) A comunidade preserva/protege a natureza (matas, rios)? R: $e3t2p2',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t2p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t2p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t2p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t2p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t2p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t2 - PERGUNTA3
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.purple[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '2.3) Existe desperdício de água na comunidade? R: $e3t2p3',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t2p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t2p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t2p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t2p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t2p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t2 - PERGUNTA 4
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.purple[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '2.4) A qualidade da água dos rios/mares é boa?  R: $e3t2p4',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t2p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t2p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t2p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t2p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t2p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t2 - PERGUNTA 5
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.purple[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '2.5) O ar que você respira tem boa qualidade?  R: $e3t2p5',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t2p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t2p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t2p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t2p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t2p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t2 - PERGUNTA 6
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.purple[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '2.6) A terra na comunidade é boa para o plantio?  R: $e3t2p6',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t2p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t2p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t2p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t2p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t2p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t2 - PERGUNTA 7
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.purple[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '2.7) A comunidade produz muito lixo? R: $e3t2p7',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t2p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t2p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t2p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t2p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t2p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t2 - PERGUNTA 8
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.purple[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '2.8) As chuvas têm provocado prejuízos na comunidade? R: $e3t2p8',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t2p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t2p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t2p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t2p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t2p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t2 - PERGUNTA 9
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.purple[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '2.9) As cheias dos rios têm sofrido alterações nos últimos anos?  R: $e3t2p9',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t2p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t2p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t2p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t2p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t2p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t2 - PERGUNTA 10
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.purple[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '2.10) As vazantes dos rios têm sofrido alterações nos últimos anos? R: $e3t2p10',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t2p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t2p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t2p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t2p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t2p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t2p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+
+      // TEMA DA PERGUNTA - t3
+      Container(
+          height: 50,
+          margin: EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.orange,
+          ),
+          child: Center(
+            child: Text(
+              '3 - SEMIÓTICA CORPORAL',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          )),
+      //
+      //t3 - PERGUNTA1
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.orange[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '3.1) Na comunidade há ocorrência de doenças intestinais? R: $e3t3p1',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t3p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t3p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t3p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t3p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t3p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t3 - PERGUNTA2
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.orange[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '3.2) Na comunidade há ocorrência de doenças respiratórias? R: $e3t3p2',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t3p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t3p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t3p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t3p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t3p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t3 - PERGUNTA3
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.orange[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '3.3) Na comunidade há ocorrência de doenças psicológicas?R: $e3t3p3',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t3p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t3p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t3p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t3p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t3p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t3 - PERGUNTA 4
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.orange[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '3.4) Na comunidade há ocorrência de doenças sexualmente transmissíveis? R: $e3t3p4',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t3p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t3p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t3p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t3p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t3p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t3 - PERGUNTA 5
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.orange[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '3.5) Na comunidade há ocorrência de doenças que diminuam a capacidade de locomoção?    R: $e3t3p5',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t3p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t3p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t3p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t3p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t3p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t3 - PERGUNTA 6
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.orange[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '3.6) Existem pessoas com doenças crônicas na comunidade?  R: $e3t3p6',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t3p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t3p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t3p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t3p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t3p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t3 - PERGUNTA 7
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.orange[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '3.7) Existem casos de suicídio na comunidade? R: $e3t3p7',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t3p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t3p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t3p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t3p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t3p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t3 - PERGUNTA 8
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.orange[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '3.8) Você considera que há obesidade na comunidade? R: $e3t3p8',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t3p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t3p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t3p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t3p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t3p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t3 - PERGUNTA 9
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.orange[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '3.9) A mortalidade infantil é um problema na comunidade? R: $e3t3p9',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t3p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t3p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t3p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t3p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t3p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t3 - PERGUNTA 10
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.orange[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '3.10) Você observa a diminuição na taxa de natalidade em sua família nos últimos 5 anos? R: $e3t3p10',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t3p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t3p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t3p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t3p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t3p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t3p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+
+      // TEMA DA PERGUNTA - t4
+      Container(
+          height: 50,
+          margin: EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.pink,
+          ),
+          child: Center(
+            child: Text(
+              '4 - SEMIÓTICA AMBIENTAL',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          )),
+      //
+      //t4 - PERGUNTA1
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.pink[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '4.1) O governo (federal, estadual, municipal) protege o meio ambiente da comunidade?  R: $e3t4p1',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t4p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t4p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t4p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t4p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t4p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t4 - PERGUNTA2
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.pink[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '4.2) A comunidade procura recuperar as suas áreas degradadas? R: $e3t4p2',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t4p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t4p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t4p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t4p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t4p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t4 - PERGUNTA3
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.pink[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '4.3) Há conflitos por motivações ambientais na sua comunidade? R: $e3t4p3',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t4p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t4p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t4p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t4p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t4p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t4 - PERGUNTA 4
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.pink[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '4.4) A ocupação desordenada na comunidade afeta o meio ambiente? R: $e3t4p4',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t4p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t4p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t4p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t4p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t4p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t4 - PERGUNTA 5
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.pink[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '4.5) A expansão/crescimento das cidades pode afetar o meio ambiente?  R: $e3t4p5',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t4p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t4p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t4p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t4p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t4p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t4 - PERGUNTA 6
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.pink[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '4.6) A construção de obras públicas (estradas, pontes, trapiches, cais e outros) pode ser prejudicial ao ambiente? R: $e3t4p6',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t4p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t4p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t4p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t4p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t4p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t4 - PERGUNTA 7
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.pink[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '4.7) A produção econômica afeta o meio ambiente? R: $e3t4p7',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t4p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t4p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t4p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t4p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t4p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t4 - PERGUNTA 8
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.pink[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '4.8) Você observa que houve aumento de desastres naturais? R: $e3t4p8',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t4p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t4p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t4p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t4p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t4p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t4 - PERGUNTA 9
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.pink[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '4.9) Você acredita em aquecimento global? R: $e3t4p9',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t4p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t4p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t4p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t4p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t4p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t4 - PERGUNTA 10
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.pink[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '4.10) Os problemas ambientais são permanentes e irreversíveis? R: $e3t4p10',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t4p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t4p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t4p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t4p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t4p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t4p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+
+      // TEMA DA PERGUNTA - t5
+      Container(
+          height: 50,
+          margin: EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.teal,
+          ),
+          child: Center(
+            child: Text(
+              '5 - ATIVIDADE ECONÔMICA',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          )),
+      //
+      //t5 - PERGUNTA1
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.teal[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '5.1) Sua família usa produtos (cascas, ervas, plantas, raízes) retirados da floresta/mata/mangue? R: $e3t5p1',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t5p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t5p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t5p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t5p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t5p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t5 - PERGUNTA2
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.teal[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '5.2) Sua família pesca para subsistência?  R: $e3t5p2',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t5p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t5p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t5p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t5p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t5p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t5 - PERGUNTA3
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.teal[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '5.3) Sua família caça animais para subsistência?  R: $e3t5p3',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t5p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t5p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t5p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t5p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t5p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t5 - PERGUNTA 4
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.teal[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '5.4) Sua família cria animais para subsistência?  R: $e3t5p4',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t5p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t5p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t5p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t5p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t5p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t5 - PERGUNTA 5
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.teal[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '5.5) Sua família planta para subsistência?  R: $e3t5p5',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t5p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t5p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t5p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t5p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t5p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t5 - PERGUNTA 6
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.teal[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '5.6) Sua família extrai madeira para subsistência? R: $e3t5p6',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t5p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t5p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t5p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t5p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t5p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t5 - PERGUNTA 7
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.teal[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '5.7) Sua família explora minerais (pedras, areias, piçarra, garimpo)? R: $e3t5p7',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t5p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t5p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t5p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t5p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t5p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t5 - PERGUNTA 8
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.teal[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '5.8) Sua família recebe benefícios sociais (bolsa família, bolsa floresta, defeso e outros)?  R: $e3t5p8',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t5p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t5p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t5p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t5p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t5p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t5 - PERGUNTA 9
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.teal[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '5.9) Sua família sobrevive de atividade remunerada/comércio? R: $e3t5p9',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t5p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t5p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t5p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t5p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t5p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t5 - PERGUNTA 10
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.teal[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '5.10) Sua família ganha pelo menos um salário mínimo mensal? R: $e3t5p10',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t5p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t5p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t5p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t5p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t5p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t5p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+
+      // TEMA DA PERGUNTA - t6
+      Container(
+          height: 50,
+          margin: EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.red,
+          ),
+          child: Center(
+            child: Text(
+              '6 - CIDADANIA E RELAÇÕES DE PODER',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          )),
+      //
+      //t6 - PERGUNTA1
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.red[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '6.1) Há prática de trabalho infantil na comunidade? R: $e3t6p1',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t6p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t6p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t6p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t6p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t6p1,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p1 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t6 - PERGUNTA2
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.red[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '6.2) Há casos de crianças/jovens que abandonam a escola? R: $e3t6p2',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t6p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t6p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t6p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t6p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t6p2,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p2 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t6 - PERGUNTA3
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.red[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '6.3) Há casos de pedofilia/exploração sexual na comunidade? Há casos de trabalho escravo na comunidade?  R: $e3t6p3',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t6p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t6p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t6p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t6p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t6p3,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p3 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t6 - PERGUNTA 4
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.red[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '6.4) Há casos de trabalho escravo na comunidade?  R: $e3t6p4',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t6p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t6p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t6p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t6p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t6p4,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p4 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t6 - PERGUNTA 5
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.red[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '6.5) Há pessoas analfabetas/semi-analfabetas na comunidade? R: $e3t6p5',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t6p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t6p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t6p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t6p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t6p5,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p5 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t6 - PERGUNTA 6
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.red[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '6.6) Há casos de ameaça de violência a lideranças e agentes públicos na comunidade? R: $e3t6p6',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t6p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t6p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t6p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t6p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t6p6,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p6 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t6 - PERGUNTA 7
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.red[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '6.7) Os idosos têm acesso ao sistema público de previdência?  R: $e3t6p7',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t6p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t6p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t6p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t6p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t6p7,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p7 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t6 - PERGUNTA 8
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.red[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '6.8) A comunidade participa nas ações promovidas por associações ou organizações semelhantes? R: $e3t6p8',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t6p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t6p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t6p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t6p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t6p8,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p8 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t6 - PERGUNTA 9
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.red[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '6.9) Há casos de discriminação de gênero (mulheres, LGBTQ e outros) na comunidade?  R: $e3t6p9',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t6p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t6p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t6p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t6p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t6p9,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p9 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      //t6 - PERGUNTA 10
+      Container(
+        margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
+        decoration: BoxDecoration(
+          color: Colors.red[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
+              child: Text(
+                '6.10) Há casos de preconceito étnico-racial na comunidade? R: $e3t6p10',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 15, top: 0, left: 0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new Radio(
+                    value: 0,
+                    groupValue: e3t6p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '0',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 1,
+                    groupValue: e3t6p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '1',
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 2,
+                    groupValue: e3t6p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '2',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 3,
+                    groupValue: e3t6p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '3',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(right: 20),
+                  ),
+                  new Radio(
+                    value: 4,
+                    groupValue: e3t6p10,
+                    onChanged: (T) {
+                      setState(() {
+                        e3t6p10 = T;
+                      });
+                    },
+                  ),
+                  new Text(
+                    '4',
+                    style: new TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+
+      /// divisor
+    ]));
   }
+
+  bool get wantKeepAlive => true;
 }
