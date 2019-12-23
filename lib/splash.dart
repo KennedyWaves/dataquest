@@ -13,18 +13,22 @@ class _splash_state extends State<splash> {
     return new Scaffold(
         body: new Stack(
           children: <Widget>[
-        new Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            new Text("  v0.1.0.0",style: TextStyle(color: Colors.white),),new Padding(padding: EdgeInsets.all(2))
-          ],
-        ),
+            new Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                new Text(
+                  "  v0.1.0.0",
+                  style: TextStyle(color: Colors.white),
+                ),
+                new Padding(padding: EdgeInsets.all(2))
+              ],
+            ),
             new Center(
               child: Image.asset(
                 "assets/images/dataquest.png",
-                width: 125,
+                width: 350,
               ),
             )
           ],
