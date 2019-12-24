@@ -8,8 +8,8 @@ void main() {
   runApp(new MaterialApp(
     home: new splash(),
     routes: <String, WidgetBuilder>{
-      '/home': (BuildContext context) => new home(),
-      '/question': (BuildContext context) => new question(),
+      '/home': (BuildContext context) => new Home(),
+      '/question': (BuildContext context) => new TelaDeQuestionario(),
     },
   ));
 }

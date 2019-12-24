@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'question.dart';
 
-class home extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _home_state createState() => _home_state();
+  HomeState createState() => HomeState();
 }
 
-class _home_state extends State<home> {
+class HomeState extends State<Home> {
   static bool testbool = false;
-
   List<Widget> _widgetOptions;
   static List<Widget> _questsOutbox;
   static List<Widget> _questsList;
@@ -168,7 +167,7 @@ class _home_state extends State<home> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => question()))
+              .push(MaterialPageRoute(builder: (context) => TelaDeQuestionario()))
         },
         tooltip: 'Increment Counter',
         child: const Icon(Icons.add),

@@ -19,7 +19,7 @@ class _splash_state extends State<splash> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 new Text(
-                  "  v0.1.0.0",
+                  "  DataQuest v0.1.0.0",
                   style: TextStyle(color: Colors.white),
                 ),
                 new Padding(padding: EdgeInsets.all(2))
@@ -28,7 +28,7 @@ class _splash_state extends State<splash> {
             new Center(
               child: Image.asset(
                 "assets/images/dataquest.png",
-                width: 350,
+                width: 250,
               ),
             )
           ],
@@ -47,7 +47,7 @@ class _splash_state extends State<splash> {
   }
 
   onDoneLoading() async {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => home()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
     Navigator.of(context)
         .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
   }

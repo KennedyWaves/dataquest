@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 @override
-class question extends StatefulWidget {
+class TelaDeQuestionario extends StatefulWidget {
   @override
   _question_state createState() => _question_state();
 }
@@ -232,7 +232,7 @@ String name = '';
 String idade = '';
 
 //TAB BAR VIEW
-class _question_state extends State<question> {
+class _question_state extends State<TelaDeQuestionario> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
