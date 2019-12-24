@@ -230,6 +230,7 @@ int e3t6p10;
 // CAMPUS NOME E IDADE
 String name = '';
 String idade = '';
+DateTime _dateTime;
 
 //TAB BAR VIEW
 class _question_state extends State<TelaDeQuestionario> {
@@ -278,8 +279,9 @@ class _Eixo1State extends State<Eixo1>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Container(
-        child: ListView(children: <Widget>[
+    return Scaffold(
+        body: Center(
+            child: ListView(children: <Widget>[
       // EIXO NOME
       Container(
         color: Colors.blue,
@@ -323,32 +325,36 @@ class _Eixo1State extends State<Eixo1>
         ),
       ),
       //ENTRADA IDADE
-      Container(
-        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
-        child: Center(
+      Center(
           child: Column(
-            children: <Widget>[
-              TextField(
-                  decoration: InputDecoration(
-                      fillColor: Colors.green[50],
-                      filled: true,
-                      icon: Icon(Icons.date_range),
-                      prefixText: "Idade: ",
-                      border: OutlineInputBorder()),
-                  keyboardType: TextInputType.number,
-                  onChanged: (String value) {
-                    setState(() {
-                      idade = '$value';
-                      print('idade $idade');
-                    });
-                  }
-                  //controller: controller,
-                  ),
-              //Text(controller.text)
-            ],
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Data de Nascimento: $_dateTime',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+            ),
           ),
-        ),
-      ),
+          RaisedButton(
+            child: Text('Escolha Data de Nascimento'),
+            onPressed: () {
+              showDatePicker(
+                      context: context,
+                      initialDate:
+                          _dateTime == null ? DateTime.now() : _dateTime,
+                      firstDate: DateTime(2001),
+                      lastDate: DateTime(2021))
+                  .then((date) {
+                setState(() {
+                  _dateTime = date;
+                });
+              });
+            },
+          )
+        ],
+      )),
+
       //INFORMATIVO SOBRE ESCALA
       Container(
         color: Colors.white,
@@ -7095,7 +7101,7 @@ class _Eixo1State extends State<Eixo1>
           ),
         ),
       ),
-    ]));
+    ])));
   }
 
   bool get wantKeepAlive => true;
@@ -7113,8 +7119,9 @@ class _Eixo2State extends State<Eixo2>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Container(
-        child: ListView(children: <Widget>[
+    return Scaffold(
+        body: Center(
+            child: ListView(children: <Widget>[
       // EIXO NOME
       Container(
         color: Colors.blue,
@@ -7158,32 +7165,36 @@ class _Eixo2State extends State<Eixo2>
         ),
       ),
       //ENTRADA IDADE
-      Container(
-        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
-        child: Center(
+      Center(
           child: Column(
-            children: <Widget>[
-              TextField(
-                  decoration: InputDecoration(
-                      fillColor: Colors.green[50],
-                      filled: true,
-                      icon: Icon(Icons.date_range),
-                      prefixText: "Idade: ",
-                      border: OutlineInputBorder()),
-                  keyboardType: TextInputType.number,
-                  onChanged: (String value) {
-                    setState(() {
-                      idade = '$value';
-                      print('idade $idade');
-                    });
-                  }
-                  //controller: controller,
-                  ),
-              //Text(controller.text)
-            ],
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Data de Nascimento: $_dateTime',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+            ),
           ),
-        ),
-      ),
+          RaisedButton(
+            child: Text('Escolha Data de Nascimento'),
+            onPressed: () {
+              showDatePicker(
+                      context: context,
+                      initialDate:
+                          _dateTime == null ? DateTime.now() : _dateTime,
+                      firstDate: DateTime(2001),
+                      lastDate: DateTime(2021))
+                  .then((date) {
+                setState(() {
+                  _dateTime = date;
+                });
+              });
+            },
+          )
+        ],
+      )),
+
       //INFORMATIVO SOBRE ESCALA
       Container(
         color: Colors.white,
@@ -13929,7 +13940,7 @@ class _Eixo2State extends State<Eixo2>
           ),
         ),
       ),
-    ]));
+    ])));
   }
 
   bool get wantKeepAlive => true;
@@ -13947,7 +13958,8 @@ class _Eixo3State extends State<Eixo3>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Container(
+    return Scaffold(
+        body: Center(
       child: ListView(
         children: <Widget>[
           // EIXO NOME
@@ -13992,33 +14004,37 @@ class _Eixo3State extends State<Eixo3>
               ),
             ),
           ),
-          //ENTRADA IDADE
-          Container(
-            margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
-            child: Center(
+//ENTRADA IDADE
+          Center(
               child: Column(
-                children: <Widget>[
-                  TextField(
-                      decoration: InputDecoration(
-                          fillColor: Colors.green[50],
-                          filled: true,
-                          icon: Icon(Icons.date_range),
-                          prefixText: "Idade: ",
-                          border: OutlineInputBorder()),
-                      keyboardType: TextInputType.number,
-                      onChanged: (String value) {
-                        setState(() {
-                          idade = '$value';
-                          print('idade $idade');
-                        });
-                      }
-                      //controller: controller,
-                      ),
-                  //Text(controller.text)
-                ],
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Data de Nascimento: $_dateTime',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
               ),
-            ),
-          ),
+              RaisedButton(
+                child: Text('Escolha Data de Nascimento'),
+                onPressed: () {
+                  showDatePicker(
+                          context: context,
+                          initialDate:
+                              _dateTime == null ? DateTime.now() : _dateTime,
+                          firstDate: DateTime(2001),
+                          lastDate: DateTime(2021))
+                      .then((date) {
+                    setState(() {
+                      _dateTime = date;
+                    });
+                  });
+                },
+              )
+            ],
+          )),
+
           //INFORMATIVO SOBRE ESCALA
           Container(
             color: Colors.white,
@@ -20766,7 +20782,7 @@ class _Eixo3State extends State<Eixo3>
           ),
         ],
       ),
-    );
+    ));
   }
 
   bool get wantKeepAlive => true;
