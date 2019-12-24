@@ -1,13 +1,19 @@
 import 'utils.dart';
-class Likert{
 
+class Likert {
   String questao = "";
-  int _resposta = 0;
+  int _resposta = 2;
+
+  Likert(String question, [int response]) {
+    questao = question;
+    if (response != null) {
+      this.resposta = response;
+    }
+  }
 
   int get resposta => _resposta;
 
   set resposta(int value) {
-
-    _resposta =  Utils.filter(value.toDouble(), minimum: 0, maximum: 4).toInt();
+    _resposta = Utils.filter(value.toDouble(), minimum: 0, maximum: 4).toInt();
   }
 }

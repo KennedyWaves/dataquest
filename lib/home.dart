@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'question.dart';
-
-DateTime _dateTime;
+import 'TelaQuestionario.dart';
 
 class Home extends StatefulWidget {
   @override
