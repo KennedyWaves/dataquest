@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'question.dart';
 
+DateTime _dateTime;
+
 class home extends StatefulWidget {
   @override
   _home_state createState() => _home_state();
@@ -76,7 +78,11 @@ class _home_state extends State<home> {
                 FlatButton(
                   child: const Text('EDITAR'),
                   onPressed: () {
-                    /* ... */
+                    showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime.now(),
+                        lastDate: DateTime(1900));
                   },
                 ),
               ],
