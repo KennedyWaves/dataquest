@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'questionario.dart';
-import 'tema.dart';
-import 'package:dataquest/likert.dart';
+import 'content.dart';
 
 @override
 class TelaDeQuestionario extends StatefulWidget {
@@ -220,6 +218,22 @@ int e3t6p10;
 
 /// FIM EIXOS
 ///
+///
+//variáveis de uso da interface
+List<String> _dataNascimentoText = <String>[
+  '01-eeee01-1975',
+  '01-01-1975',
+  '01-01-1975'
+];
+List<TextEditingController> birthdayController = <TextEditingController>[
+  new TextEditingController(),
+  new TextEditingController(),
+  new TextEditingController()
+];
+
+Content content = new Content();
+
+///
 //TAB BAR VIEW
 class QuestionState extends State<TelaDeQuestionario> {
   @override
@@ -261,70 +275,13 @@ class Eixo1 extends StatefulWidget {
   _Eixo1State createState() => new _Eixo1State();
 }
 
-//variáveis de uso da interface
-List<String> _dataNascimentoText = <String>[
-  '01-eeee01-1975',
-  '01-01-1975',
-  '01-01-1975'
-];
-List<TextEditingController> birthdayController = <TextEditingController>[
-  new TextEditingController(),
-  new TextEditingController(),
-  new TextEditingController()
-];
-
-
-List<Questionario> dataEixo = <Questionario>[
-  new Questionario(),
-  new Questionario(),
-  new Questionario()
-];
-
-
-
 //EIXO 1
 class _Eixo1State extends State<Eixo1>
     with AutomaticKeepAliveClientMixin<Eixo1> {
 
+
   @override
   Widget build(BuildContext context) {
-    //CONSTRUINDO O QUESTIONÁRIO
-    //EIXO1
-    dataEixo[0].start();
-    dataEixo[0].eixo = "EIXO: SUSTENTABILIDADES E BOM VIVER";
-    dataEixo[0].temas.add(new Tema("QUALIDADE DA MORADIA"));
-    dataEixo[0]
-        .temas[0]
-        .questoes
-        .add(new Likert("A estrutura de sua casa é segura?"));
-    dataEixo[0]
-        .temas[0]
-        .questoes
-        .add(new Likert("A sua moradia é arejada e iluminada?"));
-    dataEixo[0].temas[0].questoes.add(new Likert(
-        "A quantidade de cômodos em sua moradia é suficiente para sua família?"));
-    dataEixo[0].temas[0].questoes.add(new Likert(
-        "Os espaços em sua moradia acomodam confortavelmente todos os que moram nela?"));
-    dataEixo[0].temas[0].questoes.add(
-        new Likert("O banheiro de sua moradia tem tratamento dos dejetos?"));
-    dataEixo[0]
-        .temas[0]
-        .questoes
-        .add(new Likert("Você faz coleta seletiva de seu lixo?"));
-    dataEixo[0].temas[0].questoes.add(new Likert(
-        "Existe fornecimento de energia elétrica em sua residência ou outra forma de geração de energia?"));
-    dataEixo[0]
-        .temas[0]
-        .questoes
-        .add(new Likert("Você dispõe de refrigerador/geladeira em sua casa?"));
-    dataEixo[0]
-        .temas[0]
-        .questoes
-        .add(new Likert("Há áreas verdes no entorno de sua casa?"));
-    dataEixo[0].temas[0].questoes.add(
-        new Likert("Você possui horta e/ou árvores frutíferas em sua casa?"));
-
-
     super.build(context);
     return Scaffold(
         body: Center(
@@ -335,7 +292,7 @@ class _Eixo1State extends State<Eixo1>
                 height: 75,
                 child: Center(
                   child: new Text(
-                    dataEixo[0].eixo,
+                    content.dataEixo[0].eixo,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -362,8 +319,8 @@ class _Eixo1State extends State<Eixo1>
                               border: OutlineInputBorder()),
                           onChanged: (String value) {
                             setState(() {
-                              dataEixo[0].pessoa.nome = '$value';
-                              print(dataEixo[0].pessoa.nome);
+                              content.dataEixo[0].pessoa.nome = value;
+                              print(content.dataEixo[0].pessoa.nome);
                             });
                           }
                         //controller: controller,
@@ -390,17 +347,18 @@ class _Eixo1State extends State<Eixo1>
                         onPressed: () {
                           showDatePicker(
                               context: context,
-                              initialDate: dataEixo[0].pessoa.dataNascimento ==
-                                  null
+                              initialDate: content.dataEixo[0].pessoa
+                                  .dataNascimento == null
                                   ? DateTime.now()
-                                  : dataEixo[0].pessoa.dataNascimento,
-                              firstDate: DateTime(1930),
+                                  : content.dataEixo[0].pessoa.dataNascimento,
+                              firstDate: DateTime(1925),
                               lastDate: DateTime(2019))
                               .then((date) {
                             setState(() {
-                              dataEixo[0].pessoa.dataNascimento = date;
+                              content.dataEixo[0].pessoa.dataNascimento = date;
                               _dataNascimentoText[0] =
-                                  dataEixo[0].pessoa.dataNascimentoText();
+                                  content.dataEixo[0].pessoa
+                                      .dataNascimentoText();
                             });
                           });
                         },
@@ -436,7 +394,7 @@ class _Eixo1State extends State<Eixo1>
                   ),
                   child: Center(
                     child: Text(
-                      dataEixo[0].temas[0].tema,
+                      content.dataEixo[0].temas[0].tema,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -457,7 +415,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.1) ${dataEixo[0].temas[0].questoes[0].questao}',
+                        '1.1) ${content.dataEixo[0].temas[0].questoes[0]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -471,10 +429,12 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: "e2t1p1",
+                            groupValue: content.dataEixo[0].temas[0].questoes[0]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                dataEixo[0].temas[0].questoes[0].resposta = T;
+                                content.dataEixo[0].temas[0].questoes[0]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -487,10 +447,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: "e2t1p1",
+                            groupValue: content.dataEixo[0].temas[0].questoes[0]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                dataEixo[0].temas[0].questoes[0].resposta = T;
+                                content.dataEixo[0].temas[0].questoes[0]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -505,10 +467,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: "e2t1p1",
+                            groupValue: content.dataEixo[0].temas[0].questoes[0]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                dataEixo[0].temas[0].questoes[0].resposta = T;
+                                content.dataEixo[0].temas[0].questoes[0]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -521,10 +485,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: "e2t1p1",
+                            groupValue: content.dataEixo[0].temas[0].questoes[0]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                dataEixo[0].temas[0].questoes[0].resposta = T;
+                                content.dataEixo[0].temas[0].questoes[0]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -537,10 +503,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: "e2t1p1",
+                            groupValue: content.dataEixo[0].temas[0].questoes[0]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                dataEixo[0].temas[0].questoes[0].resposta = T;
+                                content.dataEixo[0].temas[0].questoes[0]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -567,7 +535,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.2) $dataEixo[0].temas[0].questoes[1]',
+                        '1.2) ${content.dataEixo[0].temas[0].questoes[1]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -581,10 +549,12 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: e2t1p2,
+                            groupValue: content.dataEixo[0].temas[0].questoes[1]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p2 = T;
+                                content.dataEixo[0].temas[0].questoes[1]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -597,10 +567,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: e2t1p2,
+                            groupValue: content.dataEixo[0].temas[0].questoes[1]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p2 = T;
+                                content.dataEixo[0].temas[0].questoes[1]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -615,10 +587,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: e2t1p2,
+                            groupValue: content.dataEixo[0].temas[0].questoes[1]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p2 = T;
+                                content.dataEixo[0].temas[0].questoes[1]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -631,10 +605,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: e2t1p2,
+                            groupValue: content.dataEixo[0].temas[0].questoes[1]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p2 = T;
+                                content.dataEixo[0].temas[0].questoes[1]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -647,10 +623,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: e2t1p2,
+                            groupValue: content.dataEixo[0].temas[0].questoes[1]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p2 = T;
+                                content.dataEixo[0].temas[0].questoes[1]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -677,7 +655,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.3) A quantidade de cômodos em sua moradia é suficiente para sua família? R: $e2t1p3',
+                        '1.3) ${content.dataEixo[0].temas[0].questoes[2]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -691,10 +669,12 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: e2t1p3,
+                            groupValue: content.dataEixo[0].temas[0].questoes[2]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p3 = T;
+                                content.dataEixo[0].temas[0].questoes[2]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -707,10 +687,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: e2t1p3,
+                            groupValue: content.dataEixo[0].temas[0].questoes[2]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p3 = T;
+                                content.dataEixo[0].temas[0].questoes[2]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -725,10 +707,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: e2t1p3,
+                            groupValue: content.dataEixo[0].temas[0].questoes[2]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p3 = T;
+                                content.dataEixo[0].temas[0].questoes[2]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -741,10 +725,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: e2t1p3,
+                            groupValue: content.dataEixo[0].temas[0].questoes[2]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p3 = T;
+                                content.dataEixo[0].temas[0].questoes[2]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -757,10 +743,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: e2t1p3,
+                            groupValue: content.dataEixo[0].temas[0].questoes[2]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p3 = T;
+                                content.dataEixo[0].temas[0].questoes[2]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -7178,9 +7166,10 @@ class _Eixo2State extends State<Eixo2>
   @override
   Widget build(BuildContext context) {
     //EIXO2
-    dataEixo[1].start();
-    dataEixo[1].pessoa.nome = dataEixo[0].pessoa.nome;
-    dataEixo[1].pessoa.dataNascimento = dataEixo[0].pessoa.dataNascimento;
+    content.dataEixo[1].start();
+    content.dataEixo[1].pessoa.nome = content.dataEixo[0].pessoa.nome;
+    content.dataEixo[1].pessoa.dataNascimento =
+        content.dataEixo[0].pessoa.dataNascimento;
 
     super.build(context);
     return Scaffold(
@@ -7218,8 +7207,8 @@ class _Eixo2State extends State<Eixo2>
                               border: OutlineInputBorder()),
                           onChanged: (String value) {
                             setState(() {
-                              dataEixo[1].pessoa.nome = '$value';
-                              print(dataEixo[1].pessoa.nome);
+                              content.dataEixo[1].pessoa.nome = '$value';
+                              print(content.dataEixo[1].pessoa.nome);
                             });
                           }
                         //controller: controller,
@@ -7235,7 +7224,7 @@ class _Eixo2State extends State<Eixo2>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Data de Nascimento: $dataEixo[1].pessoa.dataNascimento',
+                        'Data de Nascimento: $content.dataEixo[1].pessoa.dataNascimento',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -7246,15 +7235,15 @@ class _Eixo2State extends State<Eixo2>
                         onPressed: () {
                           showDatePicker(
                               context: context,
-                              initialDate: dataEixo[1].pessoa.dataNascimento ==
-                                  null
+                              initialDate: content.dataEixo[1].pessoa
+                                  .dataNascimento == null
                                   ? DateTime.now()
-                                  : dataEixo[1].pessoa.dataNascimento,
+                                  : content.dataEixo[1].pessoa.dataNascimento,
                               firstDate: DateTime(2001),
                               lastDate: DateTime(2021))
                               .then((date) {
                             setState(() {
-                              dataEixo[1].pessoa.dataNascimento = date;
+                              content.dataEixo[1].pessoa.dataNascimento = date;
                             });
                           });
                         },
@@ -14031,9 +14020,10 @@ class _Eixo3State extends State<Eixo3>
   @override
   Widget build(BuildContext context) {
     //EIXO3
-    dataEixo[2].start();
-    dataEixo[2].pessoa.nome = dataEixo[0].pessoa.nome;
-    dataEixo[2].pessoa.dataNascimento = dataEixo[0].pessoa.dataNascimento;
+    content.dataEixo[2].start();
+    content.dataEixo[2].pessoa.nome = content.dataEixo[0].pessoa.nome;
+    content.dataEixo[2].pessoa.dataNascimento =
+        content.dataEixo[0].pessoa.dataNascimento;
 
     super.build(context);
     return Scaffold(
@@ -14072,8 +14062,8 @@ class _Eixo3State extends State<Eixo3>
                               border: OutlineInputBorder()),
                           onChanged: (String value) {
                             setState(() {
-                              dataEixo[2].pessoa.nome = '$value';
-                              print(dataEixo[2].pessoa.nome);
+                              content.dataEixo[2].pessoa.nome = '$value';
+                              print(content.dataEixo[2].pessoa.nome);
                             });
                           }
                         //controller: controller,
@@ -14089,7 +14079,7 @@ class _Eixo3State extends State<Eixo3>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        'Data de Nascimento: $dataEixo[2].pessoa.dataNascimento',
+                        'Data de Nascimento: $content.dataEixo[2].pessoa.dataNascimento',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -14100,15 +14090,15 @@ class _Eixo3State extends State<Eixo3>
                         onPressed: () {
                           showDatePicker(
                               context: context,
-                              initialDate: dataEixo[2].pessoa.dataNascimento ==
-                                  null
+                              initialDate: content.dataEixo[2].pessoa
+                                  .dataNascimento == null
                                   ? DateTime.now()
-                                  : dataEixo[2].pessoa.dataNascimento,
+                                  : content.dataEixo[2].pessoa.dataNascimento,
                               firstDate: DateTime(2001),
                               lastDate: DateTime(2021))
                               .then((date) {
                             setState(() {
-                              dataEixo[2].pessoa.dataNascimento = date;
+                              content.dataEixo[2].pessoa.dataNascimento = date;
                             });
                           });
                         },

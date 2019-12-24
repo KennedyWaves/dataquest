@@ -2,7 +2,13 @@ import 'utils.dart';
 
 class Likert {
   String questao = "";
-  int _resposta = 2;
+  int _resposta;
+
+
+  @override
+  toString() {
+    return questao;
+  }
 
   Likert(String question, [int response]) {
     questao = question;

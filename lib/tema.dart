@@ -1,11 +1,13 @@
 import 'package:dataquest/likert.dart';
 
 class Tema {
-  String tema;
+  String _tema;
+
+  String get tema => _tema;
   List<Likert> questoes;
 
   Tema(String theme) {
-    tema = theme;
+    _tema = theme;
     questoes = <Likert>[];
   }
 
