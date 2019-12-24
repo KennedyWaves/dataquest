@@ -8,14 +8,14 @@ class Questionario{
   String eixo;
   Pessoa pessoa;
   String timestamp;
-  List<Tema> temas;
+  List<Tema> tema;
 
   Questionario();
 
   void start() {
     pessoa = new Pessoa();
     //timestamp = new DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now());
-    temas = <Tema>[];
+    tema = <Tema>[];
   }
 
 }

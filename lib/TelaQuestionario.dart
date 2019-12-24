@@ -7,9 +7,6 @@ class TelaDeQuestionario extends StatefulWidget {
   QuestionState createState() => QuestionState();
 }
 
-// --- EIXO 1 --- //
-//TEMA QUALIDADE DA MORADIA - T1
-
 //TEMA GESTÃO AMBIENTAL EPATRIMONIAL - T2
 int e1t2p1;
 int e1t2p2;
@@ -394,7 +391,7 @@ class _Eixo1State extends State<Eixo1>
                   ),
                   child: Center(
                     child: Text(
-                      content.dataEixo[0].temas[0].tema,
+                      content.dataEixo[0].tema[0].tema,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -415,7 +412,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.1) ${content.dataEixo[0].temas[0].questoes[0]}',
+                        '1.1) ${content.dataEixo[0].tema[0].questao[0]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -429,11 +426,11 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: content.dataEixo[0].temas[0].questoes[0]
+                            groupValue: content.dataEixo[0].tema[0].questao[0]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[0]
+                                content.dataEixo[0].tema[0].questao[0]
                                     .resposta = T;
                               });
                             },
@@ -447,11 +444,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: content.dataEixo[0].temas[0].questoes[0]
+                            groupValue: content.dataEixo[0].tema[0].questao[0]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[0]
+                                content.dataEixo[0].tema[0].questao[0]
                                     .resposta = T;
                               });
                             },
@@ -467,11 +464,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: content.dataEixo[0].temas[0].questoes[0]
+                            groupValue: content.dataEixo[0].tema[0].questao[0]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[0]
+                                content.dataEixo[0].tema[0].questao[0]
                                     .resposta = T;
                               });
                             },
@@ -485,11 +482,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: content.dataEixo[0].temas[0].questoes[0]
+                            groupValue: content.dataEixo[0].tema[0].questao[0]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[0]
+                                content.dataEixo[0].tema[0].questao[0]
                                     .resposta = T;
                               });
                             },
@@ -503,11 +500,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: content.dataEixo[0].temas[0].questoes[0]
+                            groupValue: content.dataEixo[0].tema[0].questao[0]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[0]
+                                content.dataEixo[0].tema[0].questao[0]
                                     .resposta = T;
                               });
                             },
@@ -535,7 +532,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.2) ${content.dataEixo[0].temas[0].questoes[1]}',
+                        '1.2) ${content.dataEixo[0].tema[0].questao[1]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -549,11 +546,11 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: content.dataEixo[0].temas[0].questoes[1]
+                            groupValue: content.dataEixo[0].tema[0].questao[1]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[1]
+                                content.dataEixo[0].tema[0].questao[1]
                                     .resposta = T;
                               });
                             },
@@ -567,11 +564,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: content.dataEixo[0].temas[0].questoes[1]
+                            groupValue: content.dataEixo[0].tema[0].questao[1]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[1]
+                                content.dataEixo[0].tema[0].questao[1]
                                     .resposta = T;
                               });
                             },
@@ -587,11 +584,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: content.dataEixo[0].temas[0].questoes[1]
+                            groupValue: content.dataEixo[0].tema[0].questao[1]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[1]
+                                content.dataEixo[0].tema[0].questao[1]
                                     .resposta = T;
                               });
                             },
@@ -605,11 +602,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: content.dataEixo[0].temas[0].questoes[1]
+                            groupValue: content.dataEixo[0].tema[0].questao[1]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[1]
+                                content.dataEixo[0].tema[0].questao[1]
                                     .resposta = T;
                               });
                             },
@@ -623,11 +620,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: content.dataEixo[0].temas[0].questoes[1]
+                            groupValue: content.dataEixo[0].tema[0].questao[1]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[1]
+                                content.dataEixo[0].tema[0].questao[1]
                                     .resposta = T;
                               });
                             },
@@ -655,7 +652,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.3) ${content.dataEixo[0].temas[0].questoes[2]}',
+                        '1.3) ${content.dataEixo[0].tema[0].questao[2]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -669,11 +666,11 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: content.dataEixo[0].temas[0].questoes[2]
+                            groupValue: content.dataEixo[0].tema[0].questao[2]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[2]
+                                content.dataEixo[0].tema[0].questao[2]
                                     .resposta = T;
                               });
                             },
@@ -687,11 +684,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: content.dataEixo[0].temas[0].questoes[2]
+                            groupValue: content.dataEixo[0].tema[0].questao[2]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[2]
+                                content.dataEixo[0].tema[0].questao[2]
                                     .resposta = T;
                               });
                             },
@@ -707,11 +704,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: content.dataEixo[0].temas[0].questoes[2]
+                            groupValue: content.dataEixo[0].tema[0].questao[2]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[2]
+                                content.dataEixo[0].tema[0].questao[2]
                                     .resposta = T;
                               });
                             },
@@ -725,11 +722,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: content.dataEixo[0].temas[0].questoes[2]
+                            groupValue: content.dataEixo[0].tema[0].questao[2]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[2]
+                                content.dataEixo[0].tema[0].questao[2]
                                     .resposta = T;
                               });
                             },
@@ -743,11 +740,11 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: content.dataEixo[0].temas[0].questoes[2]
+                            groupValue: content.dataEixo[0].tema[0].questao[2]
                                 .resposta,
                             onChanged: (T) {
                               setState(() {
-                                content.dataEixo[0].temas[0].questoes[2]
+                                content.dataEixo[0].tema[0].questao[2]
                                     .resposta = T;
                               });
                             },
@@ -775,7 +772,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.4) Os espaços em sua moradia acomodam confortavelmente todos os que moram nela? R: $e2t1p4',
+                        '1.4) ${content.dataEixo[0].tema[0].questao[3]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -789,10 +786,12 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: e2t1p4,
+                            groupValue: content.dataEixo[0].tema[0].questao[3]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p4 = T;
+                                content.dataEixo[0].tema[0].questao[3]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -805,10 +804,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: e2t1p4,
+                            groupValue: content.dataEixo[0].tema[0].questao[3]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p4 = T;
+                                content.dataEixo[0].tema[0].questao[3]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -823,10 +824,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: e2t1p4,
+                            groupValue: content.dataEixo[0].tema[0].questao[3]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p4 = T;
+                                content.dataEixo[0].tema[0].questao[3]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -839,10 +842,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: e2t1p4,
+                            groupValue: content.dataEixo[0].tema[0].questao[3]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p4 = T;
+                                content.dataEixo[0].tema[0].questao[3]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -855,10 +860,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: e2t1p4,
+                            groupValue: content.dataEixo[0].tema[0].questao[3]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p4 = T;
+                                content.dataEixo[0].tema[0].questao[3]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -885,7 +892,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.5) O banheiro de sua moradia tem tratamento dos dejetos? R: $e2t1p5',
+                        '1.5) ${content.dataEixo[0].tema[0].questao[4]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -899,10 +906,12 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: e2t1p5,
+                            groupValue: content.dataEixo[0].tema[0].questao[4]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p5 = T;
+                                content.dataEixo[0].tema[0].questao[4]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -915,10 +924,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: e2t1p5,
+                            groupValue: content.dataEixo[0].tema[0].questao[4]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p5 = T;
+                                content.dataEixo[0].tema[0].questao[4]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -933,10 +944,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: e2t1p5,
+                            groupValue: content.dataEixo[0].tema[0].questao[4]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p5 = T;
+                                content.dataEixo[0].tema[0].questao[4]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -949,10 +962,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: e2t1p5,
+                            groupValue: content.dataEixo[0].tema[0].questao[4]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p5 = T;
+                                content.dataEixo[0].tema[0].questao[4]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -965,10 +980,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: e2t1p5,
+                            groupValue: content.dataEixo[0].tema[0].questao[4]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p5 = T;
+                                content.dataEixo[0].tema[0].questao[4]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -995,7 +1012,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.6) Você faz coleta seletiva de seu lixo? R: $e2t1p6',
+                        '1.6) ${content.dataEixo[0].tema[0].questao[5]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -1009,10 +1026,12 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: e2t1p6,
+                            groupValue: content.dataEixo[0].tema[0].questao[5]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p6 = T;
+                                content.dataEixo[0].tema[0].questao[5]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1025,10 +1044,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: e2t1p6,
+                            groupValue: content.dataEixo[0].tema[0].questao[5]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p6 = T;
+                                content.dataEixo[0].tema[0].questao[5]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1043,10 +1064,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: e2t1p6,
+                            groupValue: content.dataEixo[0].tema[0].questao[5]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p6 = T;
+                                content.dataEixo[0].tema[0].questao[5]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1059,10 +1082,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: e2t1p6,
+                            groupValue: content.dataEixo[0].tema[0].questao[5]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p6 = T;
+                                content.dataEixo[0].tema[0].questao[5]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1075,10 +1100,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: e2t1p6,
+                            groupValue: content.dataEixo[0].tema[0].questao[5]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p6 = T;
+                                content.dataEixo[0].tema[0].questao[5]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1105,7 +1132,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.7) Existe fornecimento de energia elétrica em sua residência ou outra forma de geração de energia? R: $e2t1p7',
+                        '1.7) ${content.dataEixo[0].tema[0].questao[6]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -1119,10 +1146,12 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: e2t1p7,
+                            groupValue: content.dataEixo[0].tema[0].questao[6]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p7 = T;
+                                content.dataEixo[0].tema[0].questao[6]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1135,10 +1164,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: e2t1p7,
+                            groupValue: content.dataEixo[0].tema[0].questao[6]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p7 = T;
+                                content.dataEixo[0].tema[0].questao[6]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1153,10 +1184,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: e2t1p7,
+                            groupValue: content.dataEixo[0].tema[0].questao[6]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p7 = T;
+                                content.dataEixo[0].tema[0].questao[6]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1169,10 +1202,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: e2t1p7,
+                            groupValue: content.dataEixo[0].tema[0].questao[6]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p7 = T;
+                                content.dataEixo[0].tema[0].questao[6]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1185,10 +1220,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: e2t1p7,
+                            groupValue: content.dataEixo[0].tema[0].questao[6]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p7 = T;
+                                content.dataEixo[0].tema[0].questao[6]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1215,7 +1252,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.8) Você dispõe de refrigerador/geladeira em sua casa? R: $e2t1p8',
+                        '1.8) ${content.dataEixo[0].tema[0].questao[7]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -1229,10 +1266,12 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: e2t1p8,
+                            groupValue: content.dataEixo[0].tema[0].questao[7]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p8 = T;
+                                content.dataEixo[0].tema[0].questao[7]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1245,10 +1284,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: e2t1p8,
+                            groupValue: content.dataEixo[0].tema[0].questao[7]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p8 = T;
+                                content.dataEixo[0].tema[0].questao[7]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1263,10 +1304,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: e2t1p8,
+                            groupValue: content.dataEixo[0].tema[0].questao[7]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p8 = T;
+                                content.dataEixo[0].tema[0].questao[7]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1279,10 +1322,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: e2t1p8,
+                            groupValue: content.dataEixo[0].tema[0].questao[7]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p8 = T;
+                                content.dataEixo[0].tema[0].questao[7]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1295,10 +1340,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: e2t1p8,
+                            groupValue: content.dataEixo[0].tema[0].questao[7]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p8 = T;
+                                content.dataEixo[0].tema[0].questao[7]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1325,7 +1372,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.9) Há áreas verdes no entorno de sua casa? R: $e2t1p9',
+                        '1.9) ${content.dataEixo[0].tema[0].questao[8]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -1339,10 +1386,12 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: e2t1p9,
+                            groupValue: content.dataEixo[0].tema[0].questao[8]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p9 = T;
+                                content.dataEixo[0].tema[0].questao[8]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1355,10 +1404,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: e2t1p9,
+                            groupValue: content.dataEixo[0].tema[0].questao[8]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p9 = T;
+                                content.dataEixo[0].tema[0].questao[8]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1373,10 +1424,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: e2t1p9,
+                            groupValue: content.dataEixo[0].tema[0].questao[8]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p9 = T;
+                                content.dataEixo[0].tema[0].questao[8]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1389,10 +1442,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: e2t1p9,
+                            groupValue: content.dataEixo[0].tema[0].questao[8]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p9 = T;
+                                content.dataEixo[0].tema[0].questao[8]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1405,10 +1460,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: e2t1p9,
+                            groupValue: content.dataEixo[0].tema[0].questao[8]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p9 = T;
+                                content.dataEixo[0].tema[0].questao[8]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1435,7 +1492,7 @@ class _Eixo1State extends State<Eixo1>
                     Padding(
                       padding: EdgeInsets.only(bottom: 5, top: 15, left: 15),
                       child: Text(
-                        '1.10) Você possui horta e/ou árvores frutíferas em sua casa? R: $e2t1p10',
+                        '1.10) ${content.dataEixo[0].tema[0].questao[9]}',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -1449,10 +1506,12 @@ class _Eixo1State extends State<Eixo1>
                         children: <Widget>[
                           new Radio(
                             value: 0,
-                            groupValue: e2t1p10,
+                            groupValue: content.dataEixo[0].tema[0].questao[9]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p10 = T;
+                                content.dataEixo[0].tema[0].questao[9]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1465,10 +1524,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 1,
-                            groupValue: e2t1p10,
+                            groupValue: content.dataEixo[0].tema[0].questao[9]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p10 = T;
+                                content.dataEixo[0].tema[0].questao[9]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1483,10 +1544,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 2,
-                            groupValue: e2t1p10,
+                            groupValue: content.dataEixo[0].tema[0].questao[9]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p10 = T;
+                                content.dataEixo[0].tema[0].questao[9]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1499,10 +1562,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 3,
-                            groupValue: e2t1p10,
+                            groupValue: content.dataEixo[0].tema[0].questao[9]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p10 = T;
+                                content.dataEixo[0].tema[0].questao[9]
+                                    .resposta = T;
                               });
                             },
                           ),
@@ -1515,10 +1580,12 @@ class _Eixo1State extends State<Eixo1>
                           ),
                           new Radio(
                             value: 4,
-                            groupValue: e2t1p10,
+                            groupValue: content.dataEixo[0].tema[0].questao[9]
+                                .resposta,
                             onChanged: (T) {
                               setState(() {
-                                e2t1p10 = T;
+                                content.dataEixo[0].tema[0].questao[9]
+                                    .resposta = T;
                               });
                             },
                           ),
