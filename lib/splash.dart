@@ -19,7 +19,7 @@ class _splash_state extends State<splash> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 new Text(
-                  "  DataQuest v0.1.0.0",
+                  "  DataQuest v0.1.3.0",
                   style: TextStyle(color: Colors.white),
                 ),
                 new Padding(padding: EdgeInsets.all(2))
@@ -43,7 +43,7 @@ class _splash_state extends State<splash> {
   }
 
   Future<Timer> loadData() async {
-    return new Timer(Duration(seconds: 3), onDoneLoading);
+    return new Timer(Duration(seconds: 5), onDoneLoading);
   }
 
   onDoneLoading() async {
