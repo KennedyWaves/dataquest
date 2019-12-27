@@ -1,3 +1,4 @@
+import 'package:dataquest/questionario.dart';
 import 'package:flutter/material.dart';
 import 'content.dart';
 import 'utils.dart';
@@ -6892,17 +6893,18 @@ class _Eixo1State extends State<Eixo1>
         child: Center(
           child: RaisedButton.icon(
             onPressed: () {
-              content.dataEixo[0].end();
-              String csv = Utils.questToCsv(content.dataEixo[0],";");
-              Utils.write(csv, "${content.dataEixo[0].pessoa.nome.replaceAll(" ", "_")}_${content.dataEixo[0].pessoa.dataNascimentoText()}_;.csv").then(
-                  Scaffold.of(context).showSnackBar(SnackBar(
+              Questionario eixo = content.dataEixo[0];
+              eixo.end();
+              String csv = Utils.questToCsv(eixo, ";");
+              Utils.write(csv,
+                      "${eixo.pessoa.nome.replaceAll(" ", "_")}_${eixo.pessoa.dataNascimentoText()}_;.csv")
+                  .then(Scaffold.of(context).showSnackBar(SnackBar(
                     content: Text("Questionário salvo!"),
-                  ))
-              ).catchError(
-                  Scaffold.of(context).showSnackBar(SnackBar(
-                    content: Text("Questionário salvo!"),backgroundColor: Color.fromRGBO(200, 0, 0, 1),
-                  ))
-              );
+                  )))
+                  .catchError(Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text("Questionário salvo!"),
+                    backgroundColor: Color.fromRGBO(200, 0, 0, 1),
+                  )));
             },
             icon: Icon(Icons.save),
             label: Text('Salvar Formulário Eixo 1'),
@@ -13749,7 +13751,18 @@ class _Eixo2State extends State<Eixo2>
         child: Center(
           child: RaisedButton.icon(
             onPressed: () {
-              print('Salvo');
+              Questionario eixo = content.dataEixo[1];
+              eixo.end();
+              String csv = Utils.questToCsv(eixo, ";");
+              Utils.write(csv,
+                      "${eixo.pessoa.nome.replaceAll(" ", "_")}_${eixo.pessoa.dataNascimentoText()}_;.csv")
+                  .then(Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text("Questionário salvo!"),
+                  )))
+                  .catchError(Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text("Questionário salvo!"),
+                    backgroundColor: Color.fromRGBO(200, 0, 0, 1),
+                  )));
             },
             icon: Icon(Icons.save),
             label: Text('Salvar Formulário do Eixo 2'),
@@ -20897,7 +20910,18 @@ class _Eixo3State extends State<Eixo3>
             child: Center(
               child: RaisedButton.icon(
                 onPressed: () {
-                  print('Salvo');
+                  Questionario eixo = content.dataEixo[2];
+                  eixo.end();
+                  String csv = Utils.questToCsv(eixo, ";");
+                  Utils.write(csv,
+                          "${eixo.pessoa.nome.replaceAll(" ", "_")}_${eixo.pessoa.dataNascimentoText()}_;.csv")
+                      .then(Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text("Questionário salvo!"),
+                      )))
+                      .catchError(Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text("Questionário salvo!"),
+                        backgroundColor: Color.fromRGBO(200, 0, 0, 1),
+                      )));
                 },
                 icon: Icon(Icons.save),
                 label: Text('Salvar Formulário do Eixo 3'),

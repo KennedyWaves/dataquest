@@ -9,6 +9,7 @@ class Questionario{
   Pessoa pessoa;
   String timestamp;
   List<Tema> tema;
+  String observacoes;
 
   Questionario();
 
