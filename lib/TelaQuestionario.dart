@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'content.dart';
+import 'utils.dart';
 
 @override
 class TelaDeQuestionario extends StatefulWidget {
@@ -12,7 +13,7 @@ class TelaDeQuestionario extends StatefulWidget {
 ///
 //variáveis de uso da interface
 List<String> _dataNascimentoText = <String>[
-  '01-eeee01-1975',
+  '01-01-1975',
   '01-01-1975',
   '01-01-1975'
 ];
@@ -6891,7 +6892,17 @@ class _Eixo1State extends State<Eixo1>
         child: Center(
           child: RaisedButton.icon(
             onPressed: () {
-              print('Salvo');
+              content.dataEixo[0].end();
+              String csv = Utils.questToCsv(content.dataEixo[0],";");
+              Utils.write(csv, "${content.dataEixo[0].pessoa.nome.replaceAll(" ", "_")}_${content.dataEixo[0].pessoa.dataNascimentoText()}_;.csv").then(
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text("Questionário salvo!"),
+                  ))
+              ).catchError(
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text("Questionário salvo!"),backgroundColor: Color.fromRGBO(200, 0, 0, 1),
+                  ))
+              );
             },
             icon: Icon(Icons.save),
             label: Text('Salvar Formulário Eixo 1'),

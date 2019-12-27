@@ -22,4 +22,27 @@ class Tema {
       return result;
     }
   }
+
+  String headerDoTema(){
+    String result = tema;
+    for(int x = 0; x<questao.length-1;x++){
+      result+=";";
+    }
+    return result;
+  }
+
+  String todasAsQuestoes(){
+    String result = "";
+    for(Likert likert in questao){
+      result+=likert.questao+";";
+    }
+    return result;
+  }
+  String todasAsRespostas(){
+    String result = "";
+    for(Likert likert in questao){
+      result+=likert.resposta.toString()+";";
+    }
+    return result;
+  }
 }
