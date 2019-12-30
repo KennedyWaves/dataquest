@@ -75,8 +75,14 @@ flutter {
 }
 
 dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    classpath 'com.android.tools.build:gradle:3.4.0'
+zz
+    classpath ('com.google.firebase:firebase-plugins:1.1.0') {
+        exclude group: 'com.google.guava', module: 'guava-jdk5'
+    }
 }
