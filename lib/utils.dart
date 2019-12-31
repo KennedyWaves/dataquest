@@ -26,14 +26,29 @@ class Utils {
 
   static write(String text, String filename) async {
     print("writing...");
-    Map<PermissionGroup, PermissionStatus> result =
-        await PermissionHandler().requestPermissions([PermissionGroup.storage]);
-
-    switch (result[PermissionGroup.storage]) {
+    PermissionStatus status = await PermissionHandler()
+        .checkPermissionStatus(PermissionGroup.storage);
+    if (status != PermissionStatus.granted) {
+      Map<PermissionGroup, PermissionStatus> request = await PermissionHandler()
+          .requestPermissions([PermissionGroup.storage]);
+      status = request[PermissionGroup.storage];
+    }
+    print("SELECT");
+    switch (status) {
       case PermissionStatus.granted:
         final directory = await getExternalStorageDirectory();
-        print('${directory.path}');
-        final file = File('${directory.path}/$filename');
+        bool exists =
+            await Directory('${directory.path}/dataquest/quests').exists();
+        if (!exists) {
+          new Directory('${directory.path}/dataquest/quests').create(recursive: true)
+              // The created directory is returned as a Future.
+              .then((Directory directory) {
+
+            print(directory.path);
+          });
+        }
+        print('LOCATION ${directory.path}/dataquest/quests');
+        final file = File('${directory.path}/dataquest/quests/$filename');
         await file.writeAsString(text);
         print("CARALHO SAVED!");
         break;
@@ -50,7 +65,7 @@ class Utils {
         // do something
         break;
       default:
-        print(result[PermissionGroup.storage]);
+        print(status);
         break;
     }
   }
