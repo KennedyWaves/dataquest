@@ -141,7 +141,8 @@ class _Eixo1State extends State<Eixo1>
                           ? DateTime.now()
                           : content.eixo[0].pessoa.dataNascimento,
                       firstDate: DateTime(1925),
-                      lastDate: DateTime(2019))
+                      lastDate: DateTime(2019),
+                      locale: Locale("pt"))
                   .then((date) {
                 setState(() {
                   content.eixo[0].pessoa.dataNascimento = date;
@@ -7000,7 +7001,8 @@ class _Eixo2State extends State<Eixo2>
                           ? DateTime.now()
                           : content.eixo[1].pessoa.dataNascimento,
                       firstDate: DateTime(1925),
-                      lastDate: DateTime(2019))
+                      lastDate: DateTime(2019),
+                      locale: Locale("pt"))
                   .then((date) {
                 setState(() {
                   content.eixo[1].pessoa.dataNascimento = date;
@@ -13859,7 +13861,8 @@ class _Eixo3State extends State<Eixo3>
                                   ? DateTime.now()
                                   : content.eixo[2].pessoa.dataNascimento,
                           firstDate: DateTime(1925),
-                          lastDate: DateTime(2019))
+                          lastDate: DateTime(2019),
+                          locale: Locale("pt"))
                       .then((date) {
                     setState(() {
                       content.eixo[2].pessoa.dataNascimento = date;

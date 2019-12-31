@@ -170,8 +170,8 @@ class HomeState extends State<Home> {
       )),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => TelaDeQuestionario()))
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => TelaDeQuestionario()))
         },
         tooltip: 'Increment Counter',
         child: const Icon(Icons.add),
