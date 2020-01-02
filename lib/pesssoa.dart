@@ -1,8 +1,12 @@
 import 'package:intl/intl.dart';
 
-class Pessoa{
-
+class Pessoa {
   String nome = "";
+  String trabalho = "";
+  String formacao = "";
+  String localidade = "";
+  String genero = "";
+  String observacoes = "";
   DateFormat _dateFormat = DateFormat("dd-MM-yyyy");
   DateTime dataNascimento;
 
@@ -15,5 +19,4 @@ class Pessoa{
   String dataNascimentoText() {
     return _dateFormat.format(dataNascimento);
   }
-
 }

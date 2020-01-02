@@ -13,6 +13,13 @@ class Questionario {
   String localidade;
   String genero;
 
+  String obsT1 = "";
+  String obsT2 = "";
+  String obsT3 = "";
+  String obsT4 = "";
+  String obsT5 = "";
+  String obsT6 = "";
+
   Questionario();
 
   void start() {

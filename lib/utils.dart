@@ -11,11 +11,11 @@ class Utils {
     }
     String line0 = "${quest.eixo}$separador";
     String line1 =
-        "METADATA$separador$separador$separador${quest.todosOsTemas()}$separador$separador";
+        "METADATA$separador$separador$separador$separador$separador$separador$separador${quest.todosOsTemas()}$separador$separador";
     String line2 =
-        "NOME${separador}DATA_NASCIMENTO${separador}TIMESTAMP$separador${quest.todasAsQuestoes()}${separador}OBSERVACOES$separador";
+        "NOME${separador}DATA_NASCIMENTO${separador}GENERO${separador}ATIV_LABORAL${separador}FORMACAO${separador}LOCALIDADE${separador}TIMESTAMP$separador${quest.todasAsQuestoes()}${separador}OBSERVACOES$separador";
     String line3 =
-        "${quest.pessoa.nome}$separador${quest.pessoa.dataNascimentoText()}$separador${quest.timestamp}$separador${quest.todasAsRespostas()}$separador${quest.observacoes}$separador";
+        "${quest.pessoa.nome}$separador${quest.pessoa.dataNascimentoText()}$separador${quest.pessoa.genero}$separador${quest.pessoa.trabalho}$separador${quest.pessoa.formacao}$separador${quest.pessoa.localidade}$separador${quest.timestamp}$separador${quest.todasAsRespostas()}$separador${quest.pessoa.observacoes}$separador";
     String result = line1 + "\n" + line2 + "\n" + line3;
     int howMany = separador.allMatches(line3).length;
     for (int x = 1; x < howMany; x++) {

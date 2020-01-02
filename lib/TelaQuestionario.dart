@@ -1,7 +1,10 @@
 import 'package:dataquest/questionario.dart';
+
 import 'package:flutter/material.dart';
 import 'content.dart';
 import 'utils.dart';
+
+String genero = '';
 
 @override
 class TelaDeQuestionario extends StatefulWidget {
@@ -72,6 +75,25 @@ class Eixo1 extends StatefulWidget {
 class _Eixo1State extends State<Eixo1>
     with AutomaticKeepAliveClientMixin<Eixo1> {
   @override
+  String gender = "";
+  var _currencies = [
+    'Masculino',
+    'Feminino',
+    'Transgênero',
+    'Cisgênero',
+    'Transexual',
+    'Travesti'
+  ];
+  var _currentItemSelected = 'Masculino';
+
+  void _onDropDownItemSelected(String newValueSelected) {
+    setState(() {
+      this._currentItemSelected = newValueSelected;
+    });
+    content.eixo[0].pessoa.genero = newValueSelected;
+    print(content.eixo[0].pessoa.genero);
+  }
+
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
@@ -100,12 +122,21 @@ class _Eixo1State extends State<Eixo1>
         child: Center(
           child: Column(
             children: <Widget>[
+              Text(
+                'NOME DO INFORMANTE:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
               TextField(
                   decoration: InputDecoration(
                       fillColor: Colors.green[50],
                       filled: true,
-                      icon: Icon(Icons.people),
-                      prefixText: "Nome: ",
+                      //icon: Icon(Icons.people),
+                      //prefixText: "Nome: ",
                       border: OutlineInputBorder()),
                   onChanged: (String value) {
                     setState(() {
@@ -125,12 +156,8 @@ class _Eixo1State extends State<Eixo1>
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            'Data de Nascimento: ${_dataNascimentoText[0]}',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-            ),
+          Padding(
+            padding: EdgeInsets.only(top: 10),
           ),
           RaisedButton(
             child: Text('Escolha Data de Nascimento'),
@@ -151,10 +178,161 @@ class _Eixo1State extends State<Eixo1>
                 });
               });
             },
-          )
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 5, bottom: 5),
+          ),
+          Text(
+            'Data de Nascimento: ${_dataNascimentoText[0]}',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 0, bottom: 15),
+          ),
         ],
       )),
 
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'GÊNERO:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              DropdownButton<String>(
+                items: _currencies.map((String dropDownStringItem) {
+                  return DropdownMenuItem<String>(
+                    value: dropDownStringItem,
+                    child: Text(dropDownStringItem),
+                  );
+                }).toList(),
+                onChanged: (String newValueSelected) {
+                  // Your code to execute, when a menu item is selected from drop down
+                  _onDropDownItemSelected(newValueSelected);
+                },
+                value: _currentItemSelected,
+              ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
+
+      // ENTRADA ATIVIDADE LABORAL
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'ATIVIDADE LABORAL:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              TextField(
+                  decoration: InputDecoration(
+                      fillColor: Colors.green[50],
+                      filled: true,
+                      //icon: Icon(Icons.people),
+                      border: OutlineInputBorder()),
+                  onChanged: (String value) {
+                    setState(() {
+                      content.eixo[0].pessoa.trabalho = value;
+                      print(content.eixo[0].pessoa.trabalho);
+                    });
+                  }
+                  //controller: controller,
+                  ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
+
+      // ENTRADA FORMAÇÃO
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'FORMAÇÃO:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              TextField(
+                  decoration: InputDecoration(
+                      fillColor: Colors.green[50],
+                      filled: true,
+                      //icon: Icon(Icons.people),
+                      border: OutlineInputBorder()),
+                  onChanged: (String value) {
+                    setState(() {
+                      content.eixo[0].pessoa.formacao = value;
+                      print(content.eixo[0].pessoa.formacao);
+                    });
+                  }
+                  //controller: controller,
+                  ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
+
+      // ENTRADA LOCAlIDADE
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'LOCALIDADE:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              TextField(
+                  decoration: InputDecoration(
+                      fillColor: Colors.green[50],
+                      filled: true,
+                      //icon: Icon(Icons.people),
+                      border: OutlineInputBorder()),
+                  onChanged: (String value) {
+                    setState(() {
+                      content.eixo[0].pessoa.localidade = value;
+                      print(content.eixo[0].pessoa.localidade);
+                    });
+                  }
+                  //controller: controller,
+                  ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
       //INFORMATIVO SOBRE ESCALA
       Container(
         color: Colors.white,
@@ -6885,6 +7063,41 @@ class _Eixo1State extends State<Eixo1>
           ],
         ),
       ),
+      //obs
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'OBSERVAÇÕES:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              TextField(
+                  decoration: InputDecoration(
+                      fillColor: Colors.green[50],
+                      filled: true,
+                      //icon: Icon(Icons.people),
+                      //prefixText: "Nome: ",
+                      border: OutlineInputBorder()),
+                  onChanged: (String value) {
+                    setState(() {
+                      content.eixo[0].pessoa.observacoes = value;
+                      print(content.eixo[0].pessoa.observacoes);
+                    });
+                  }
+                  //controller: controller,
+                  ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
 
       /// divisor
       ///
@@ -6929,10 +7142,34 @@ class Eixo2 extends StatefulWidget {
 class _Eixo2State extends State<Eixo2>
     with AutomaticKeepAliveClientMixin<Eixo2> {
   @override
+  String gender = "";
+  var _currencies = [
+    'Masculino',
+    'Feminino',
+    'Transgênero',
+    'Cisgênero',
+    'Transexual',
+    'Travesti'
+  ];
+  var _currentItemSelected = 'Masculino';
+
+  void _onDropDownItemSelected(String newValueSelected) {
+    setState(() {
+      this._currentItemSelected = newValueSelected;
+    });
+    content.eixo[1].pessoa.genero = newValueSelected;
+    print(content.eixo[1].pessoa.genero);
+  }
+
   Widget build(BuildContext context) {
     //EIXO2
-    //content.eixo[1].pessoa.nome = content.eixo[0].pessoa.nome;
-    //content.eixo[1].pessoa.dataNascimento = content.eixo[0].pessoa.dataNascimento;
+    content.eixo[1].pessoa.nome = content.eixo[0].pessoa.nome;
+    content.eixo[1].pessoa.dataNascimento =
+        content.eixo[0].pessoa.dataNascimento;
+    content.eixo[1].pessoa.trabalho = content.eixo[0].pessoa.trabalho;
+    content.eixo[1].pessoa.formacao = content.eixo[0].pessoa.formacao;
+    content.eixo[1].pessoa.localidade = content.eixo[0].pessoa.localidade;
+    content.eixo[1].pessoa.genero = content.eixo[0].pessoa.genero;
 
     super.build(context);
     return Scaffold(
@@ -6960,16 +7197,25 @@ class _Eixo2State extends State<Eixo2>
         child: Center(
           child: Column(
             children: <Widget>[
+              Text(
+                'NOME DO INFORMANTE:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
               TextField(
                   decoration: InputDecoration(
                       fillColor: Colors.green[50],
                       filled: true,
-                      icon: Icon(Icons.people),
-                      prefixText: "Nome: ",
+                      //icon: Icon(Icons.people),
+                      //prefixText: "Nome: ",
                       border: OutlineInputBorder()),
                   onChanged: (String value) {
                     setState(() {
-                      content.eixo[1].pessoa.nome = '$value';
+                      content.eixo[1].pessoa.nome = value;
                       print(content.eixo[1].pessoa.nome);
                     });
                   }
@@ -6985,12 +7231,8 @@ class _Eixo2State extends State<Eixo2>
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            'Data de Nascimento: ${_dataNascimentoText[1]}',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-            ),
+          Padding(
+            padding: EdgeInsets.only(top: 10),
           ),
           RaisedButton(
             child: Text('Escolha Data de Nascimento'),
@@ -7011,9 +7253,161 @@ class _Eixo2State extends State<Eixo2>
                 });
               });
             },
-          )
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 5, bottom: 5),
+          ),
+          Text(
+            'Data de Nascimento: ${_dataNascimentoText[0]}',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 0, bottom: 15),
+          ),
         ],
       )),
+
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'GÊNERO:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              DropdownButton<String>(
+                items: _currencies.map((String dropDownStringItem) {
+                  return DropdownMenuItem<String>(
+                    value: dropDownStringItem,
+                    child: Text(dropDownStringItem),
+                  );
+                }).toList(),
+                onChanged: (String newValueSelected) {
+                  // Your code to execute, when a menu item is selected from drop down
+                  _onDropDownItemSelected(newValueSelected);
+                },
+                value: _currentItemSelected,
+              ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
+
+      // ENTRADA ATIVIDADE LABORAL
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'ATIVIDADE LABORAL:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              TextField(
+                  decoration: InputDecoration(
+                      fillColor: Colors.green[50],
+                      filled: true,
+                      //icon: Icon(Icons.people),
+                      border: OutlineInputBorder()),
+                  onChanged: (String value) {
+                    setState(() {
+                      content.eixo[1].pessoa.trabalho = value;
+                      print(content.eixo[1].pessoa.trabalho);
+                    });
+                  }
+                  //controller: controller,
+                  ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
+
+      // ENTRADA FORMAÇÃO
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'FORMAÇÃO:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              TextField(
+                  decoration: InputDecoration(
+                      fillColor: Colors.green[50],
+                      filled: true,
+                      //icon: Icon(Icons.people),
+                      border: OutlineInputBorder()),
+                  onChanged: (String value) {
+                    setState(() {
+                      content.eixo[1].pessoa.formacao = value;
+                      print(content.eixo[1].pessoa.formacao);
+                    });
+                  }
+                  //controller: controller,
+                  ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
+
+      // ENTRADA LOCAlIDADE
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'LOCALIDADE:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              TextField(
+                  decoration: InputDecoration(
+                      fillColor: Colors.green[50],
+                      filled: true,
+                      //icon: Icon(Icons.people),
+                      border: OutlineInputBorder()),
+                  onChanged: (String value) {
+                    setState(() {
+                      content.eixo[1].pessoa.localidade = value;
+                      print(content.eixo[1].pessoa.localidade);
+                    });
+                  }
+                  //controller: controller,
+                  ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
 
       //INFORMATIVO SOBRE ESCALA
       Container(
@@ -13745,6 +14139,41 @@ class _Eixo2State extends State<Eixo2>
           ],
         ),
       ),
+      //
+      Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'OBSERVAÇÕES:',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              TextField(
+                  decoration: InputDecoration(
+                      fillColor: Colors.green[50],
+                      filled: true,
+                      //icon: Icon(Icons.people),
+                      //prefixText: "Nome: ",
+                      border: OutlineInputBorder()),
+                  onChanged: (String value) {
+                    setState(() {
+                      content.eixo[1].pessoa.observacoes = value;
+                      print(content.eixo[1].pessoa.observacoes);
+                    });
+                  }
+                  //controller: controller,
+                  ),
+              //Text(controller.text)
+            ],
+          ),
+        ),
+      ),
 
       /// divisor
       ///
@@ -13786,11 +14215,35 @@ class Eixo3 extends StatefulWidget {
 //EIXO 3
 class _Eixo3State extends State<Eixo3>
     with AutomaticKeepAliveClientMixin<Eixo3> {
+  String gender = "";
+  var _currencies = [
+    'Masculino',
+    'Feminino',
+    'Transgênero',
+    'Cisgênero',
+    'Transexual',
+    'Travesti'
+  ];
+  var _currentItemSelected = 'Masculino';
+
+  void _onDropDownItemSelected(String newValueSelected) {
+    setState(() {
+      this._currentItemSelected = newValueSelected;
+    });
+    content.eixo[2].pessoa.genero = newValueSelected;
+    print(content.eixo[2].pessoa.genero);
+  }
+
   @override
   Widget build(BuildContext context) {
     //EIXO3
-    //content.eixo[2].pessoa.nome = content.eixo[0].pessoa.nome;
-    // content.eixo[2].pessoa.dataNascimento = content.eixo[0].pessoa.dataNascimento;
+    content.eixo[2].pessoa.nome = content.eixo[0].pessoa.nome;
+    content.eixo[2].pessoa.dataNascimento =
+        content.eixo[0].pessoa.dataNascimento;
+    content.eixo[2].pessoa.trabalho = content.eixo[0].pessoa.trabalho;
+    content.eixo[2].pessoa.formacao = content.eixo[0].pessoa.formacao;
+    content.eixo[2].pessoa.localidade = content.eixo[0].pessoa.localidade;
+    content.eixo[2].pessoa.genero = content.eixo[0].pessoa.genero;
 
     super.build(context);
     return Scaffold(
@@ -13819,16 +14272,25 @@ class _Eixo3State extends State<Eixo3>
             child: Center(
               child: Column(
                 children: <Widget>[
+                  Text(
+                    'NOME DO INFORMANTE:',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
                   TextField(
                       decoration: InputDecoration(
                           fillColor: Colors.green[50],
                           filled: true,
-                          icon: Icon(Icons.people),
-                          prefixText: "Nome: ",
+                          //icon: Icon(Icons.people),
+                          //prefixText: "Nome: ",
                           border: OutlineInputBorder()),
                       onChanged: (String value) {
                         setState(() {
-                          content.eixo[2].pessoa.nome = '$value';
+                          content.eixo[2].pessoa.nome = value;
                           print(content.eixo[2].pessoa.nome);
                         });
                       }
@@ -13844,12 +14306,8 @@ class _Eixo3State extends State<Eixo3>
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                'Data de Nascimento: ${_dataNascimentoText[2]}',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                ),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
               ),
               RaisedButton(
                 child: Text('Escolha Data de Nascimento'),
@@ -13857,9 +14315,9 @@ class _Eixo3State extends State<Eixo3>
                   showDatePicker(
                           context: context,
                           initialDate:
-                              content.eixo[2].pessoa.dataNascimento == null
+                              content.eixo[0].pessoa.dataNascimento == null
                                   ? DateTime.now()
-                                  : content.eixo[2].pessoa.dataNascimento,
+                                  : content.eixo[0].pessoa.dataNascimento,
                           firstDate: DateTime(1925),
                           lastDate: DateTime(2019),
                           locale: Locale("pt"))
@@ -13871,9 +14329,161 @@ class _Eixo3State extends State<Eixo3>
                     });
                   });
                 },
-              )
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 5, bottom: 5),
+              ),
+              Text(
+                'Data de Nascimento: ${_dataNascimentoText[0]}',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 0, bottom: 15),
+              ),
             ],
           )),
+
+          Container(
+            margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'GÊNERO:',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                  DropdownButton<String>(
+                    items: _currencies.map((String dropDownStringItem) {
+                      return DropdownMenuItem<String>(
+                        value: dropDownStringItem,
+                        child: Text(dropDownStringItem),
+                      );
+                    }).toList(),
+                    onChanged: (String newValueSelected) {
+                      // Your code to execute, when a menu item is selected from drop down
+                      _onDropDownItemSelected(newValueSelected);
+                    },
+                    value: _currentItemSelected,
+                  ),
+                  //Text(controller.text)
+                ],
+              ),
+            ),
+          ),
+
+          // ENTRADA ATIVIDADE LABORAL
+          Container(
+            margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'ATIVIDADE LABORAL:',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextField(
+                      decoration: InputDecoration(
+                          fillColor: Colors.green[50],
+                          filled: true,
+                          //icon: Icon(Icons.people),
+                          border: OutlineInputBorder()),
+                      onChanged: (String value) {
+                        setState(() {
+                          content.eixo[2].pessoa.trabalho = value;
+                          print(content.eixo[2].pessoa.trabalho);
+                        });
+                      }
+                      //controller: controller,
+                      ),
+                  //Text(controller.text)
+                ],
+              ),
+            ),
+          ),
+
+          // ENTRADA FORMAÇÃO
+          Container(
+            margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'FORMAÇÃO:',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextField(
+                      decoration: InputDecoration(
+                          fillColor: Colors.green[50],
+                          filled: true,
+                          //icon: Icon(Icons.people),
+                          border: OutlineInputBorder()),
+                      onChanged: (String value) {
+                        setState(() {
+                          content.eixo[2].pessoa.formacao = value;
+                          print(content.eixo[2].pessoa.formacao);
+                        });
+                      }
+                      //controller: controller,
+                      ),
+                  //Text(controller.text)
+                ],
+              ),
+            ),
+          ),
+
+          // ENTRADA LOCAlIDADE
+          Container(
+            margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'LOCALIDADE:',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextField(
+                      decoration: InputDecoration(
+                          fillColor: Colors.green[50],
+                          filled: true,
+                          //icon: Icon(Icons.people),
+                          border: OutlineInputBorder()),
+                      onChanged: (String value) {
+                        setState(() {
+                          content.eixo[2].pessoa.localidade = value;
+                          print(content.eixo[2].pessoa.localidade);
+                        });
+                      }
+                      //controller: controller,
+                      ),
+                  //Text(controller.text)
+                ],
+              ),
+            ),
+          ),
 
           //INFORMATIVO SOBRE ESCALA
           Container(
@@ -20605,6 +21215,40 @@ class _Eixo3State extends State<Eixo3>
               ],
             ),
           ),
+          Container(
+            margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'OBSERVAÇÕES:',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextField(
+                      decoration: InputDecoration(
+                          fillColor: Colors.green[50],
+                          filled: true,
+                          //icon: Icon(Icons.people),
+                          //prefixText: "Nome: ",
+                          border: OutlineInputBorder()),
+                      onChanged: (String value) {
+                        setState(() {
+                          content.eixo[2].pessoa.observacoes = value;
+                          print(content.eixo[2].pessoa.observacoes);
+                        });
+                      }
+                      //controller: controller,
+                      ),
+                  //Text(controller.text)
+                ],
+              ),
+            ),
+          ),
 
           /// divisor
           ///
@@ -20624,7 +21268,6 @@ class _Eixo3State extends State<Eixo3>
                         content: Text("Questionário salvo!"),
                         backgroundColor: Color.fromRGBO(200, 0, 0, 1),
                       )));
-                      
                 },
                 icon: Icon(Icons.save),
                 label: Text('Salvar Formulário do Eixo 3'),
