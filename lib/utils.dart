@@ -11,7 +11,7 @@ class Utils {
     }
     String line0 = "${quest.eixo}$separador";
     String line1 =
-        "METADATA$separador $separador $separador${quest.TodosOsTemas()}$separador $separador";
+        "METADATA$separador$separador$separador${quest.todosOsTemas()}$separador$separador";
     String line2 =
         "NOME${separador}DATA_NASCIMENTO${separador}TIMESTAMP$separador${quest.todasAsQuestoes()}${separador}OBSERVACOES$separador";
     String line3 =
@@ -19,7 +19,7 @@ class Utils {
     String result = line1 + "\n" + line2 + "\n" + line3;
     int howMany = separador.allMatches(line3).length;
     for (int x = 1; x < howMany; x++) {
-      line0 += " $separador";
+      line0 += "$separador";
     }
     return line0 + "\n" + result;
   }
@@ -40,10 +40,10 @@ class Utils {
         bool exists =
             await Directory('${directory.path}/dataquest/quests').exists();
         if (!exists) {
-          new Directory('${directory.path}/dataquest/quests').create(recursive: true)
+          new Directory('${directory.path}/dataquest/quests')
+              .create(recursive: true)
               // The created directory is returned as a Future.
               .then((Directory directory) {
-
             print(directory.path);
           });
         }

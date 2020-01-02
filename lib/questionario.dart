@@ -2,14 +2,16 @@ import 'package:intl/intl.dart';
 import 'package:dataquest/pesssoa.dart';
 import 'tema.dart';
 
-
-
-class Questionario{
+class Questionario {
   String eixo;
   Pessoa pessoa;
   String timestamp;
   List<Tema> tema;
   String observacoes;
+  String trabalho;
+  String formacao;
+  String localidade;
+  String genero;
 
   Questionario();
 
@@ -18,32 +20,34 @@ class Questionario{
     tema = <Tema>[];
   }
 
-  void end(){
+  void end() {
     timestamp = new DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now());
   }
 
-  String TodosOsTemas(){
+  String todosOsTemas() {
     String result = "";
-    for(Tema theme in tema){
-      result+=theme.headerDoTema()+";";
+    for (Tema theme in tema) {
+      result += theme.headerDoTema() + ";";
     }
     return result;
   }
 
-  String todasAsQuestoes(){
+  String testando;
+  String todasAsQuestoes() {
     String result = "";
-    for(Tema theme in tema){
-      result+=theme.todasAsQuestoes()+";";
+    for (Tema theme in tema) {
+      result += theme.todasAsQuestoes();
     }
+    testando = result;
+    print('$testando');
     return result;
   }
 
-  String todasAsRespostas(){
+  String todasAsRespostas() {
     String result = "";
-    for(Tema theme in tema){
-      result+=theme.todasAsRespostas()+";";
+    for (Tema theme in tema) {
+      result += theme.todasAsRespostas();
     }
     return result;
   }
-
 }
