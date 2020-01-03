@@ -2,7 +2,7 @@ import 'package:dataquest/likert.dart';
 
 class Tema {
   String _tema;
-
+  String observacoes;
   String get tema => _tema;
   List<Likert> questao;
 

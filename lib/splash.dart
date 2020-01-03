@@ -19,7 +19,7 @@ class _splash_state extends State<splash> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 new Text(
-                  "  DataQuest v0.1.5.0",
+                  "  DataQuest v0.1.6.0",
                   style: TextStyle(color: Colors.white),
                 ),
                 new Padding(padding: EdgeInsets.only(bottom: 50, left: 10))

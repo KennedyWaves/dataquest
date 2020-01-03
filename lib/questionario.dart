@@ -13,13 +13,6 @@ class Questionario {
   String localidade;
   String genero;
 
-  String obsT1 = "";
-  String obsT2 = "";
-  String obsT3 = "";
-  String obsT4 = "";
-  String obsT5 = "";
-  String obsT6 = "";
-
   Questionario();
 
   void start() {
@@ -57,4 +50,24 @@ class Questionario {
     }
     return result;
   }
+
+  static String questToCsv(Questionario quest, [String separador]) {
+    if (separador == null) {
+      separador = ",";
+    }
+    String line0 = "${quest.eixo}$separador";
+    String line1 =
+        "METADATA$separador$separador$separador$separador$separador$separador$separador${quest.todosOsTemas()}$separador$separador";
+    String line2 =
+        "NOME${separador}DATA_NASCIMENTO${separador}GENERO${separador}ATIV_LABORAL${separador}FORMACAO${separador}LOCALIDADE${separador}TIMESTAMP$separador${quest.todasAsQuestoes()}${separador}OBSERVACOES$separador";
+    String line3 =
+        "${quest.pessoa.nome}$separador${quest.pessoa.dataNascimentoText()}$separador${quest.pessoa.genero}$separador${quest.pessoa.trabalho}$separador${quest.pessoa.formacao}$separador${quest.pessoa.localidade}$separador${quest.timestamp}$separador${quest.todasAsRespostas()}$separador${quest.pessoa.observacoes}$separador";
+    String result = line1 + "\n" + line2 + "\n" + line3;
+    int howMany = separador.allMatches(line3).length;
+    for (int x = 1; x < howMany; x++) {
+      line0 += "$separador";
+    }
+    return line0 + "\n" + result;
+  }
+
 }

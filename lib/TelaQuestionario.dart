@@ -1,10 +1,29 @@
 import 'package:dataquest/questionario.dart';
-
 import 'package:flutter/material.dart';
 import 'content.dart';
 import 'utils.dart';
 
 String genero = '';
+List<String> _formacao = [
+  'Fundamental incompleto',
+  'Fundamental completo',
+  'Médio incompleto',
+  'Médio completo',
+  'Superior incompleto',
+  'Superior completo',
+  'Pós-graduação imcompleta',
+  'Pós-graduação'
+];
+
+List<String> _generos = [
+  'Masculino',
+  'Feminino',
+  'Transgênero',
+  'Cisgênero',
+  'Transexual',
+  'Travesti'
+];
+
 
 @override
 class TelaDeQuestionario extends StatefulWidget {
@@ -21,13 +40,15 @@ List<String> _dataNascimentoText = <String>[
   '01-01-1975',
   '01-01-1975'
 ];
+Content content = new Content();
+
 List<TextEditingController> birthdayController = <TextEditingController>[
   new TextEditingController(),
   new TextEditingController(),
   new TextEditingController()
 ];
 
-Content content = new Content();
+
 
 ///
 //TAB BAR VIEW
@@ -74,16 +95,8 @@ class Eixo1 extends StatefulWidget {
 //EIXO 1
 class _Eixo1State extends State<Eixo1>
     with AutomaticKeepAliveClientMixin<Eixo1> {
-  @override
-  String gender = "";
-  var _currencies = [
-    'Masculino',
-    'Feminino',
-    'Transgênero',
-    'Cisgênero',
-    'Transexual',
-    'Travesti'
-  ];
+
+  String _selectedFormacao = "Fundamental incompleto";
   var _currentItemSelected = 'Masculino';
 
   void _onDropDownItemSelected(String newValueSelected) {
@@ -94,6 +107,15 @@ class _Eixo1State extends State<Eixo1>
     print(content.eixo[0].pessoa.genero);
   }
 
+  void _onDropDownFormacaoSelected(String newValueSelected) {
+    setState(() {
+      this._selectedFormacao = newValueSelected;
+    });
+    content.eixo[0].pessoa.formacao = newValueSelected;
+    print(content.eixo[0].pessoa.formacao);
+  }
+
+  @override
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
@@ -211,7 +233,7 @@ class _Eixo1State extends State<Eixo1>
                 ),
               ),
               DropdownButton<String>(
-                items: _currencies.map((String dropDownStringItem) {
+                items: _generos.map((String dropDownStringItem) {
                   return DropdownMenuItem<String>(
                     value: dropDownStringItem,
                     child: Text(dropDownStringItem),
@@ -256,9 +278,8 @@ class _Eixo1State extends State<Eixo1>
                       print(content.eixo[0].pessoa.trabalho);
                     });
                   }
-                  //controller: controller,
-                  ),
-              //Text(controller.text)
+                //controller: controller,
+              ),
             ],
           ),
         ),
@@ -279,21 +300,19 @@ class _Eixo1State extends State<Eixo1>
                   color: Colors.black,
                 ),
               ),
-              TextField(
-                  decoration: InputDecoration(
-                      fillColor: Colors.green[50],
-                      filled: true,
-                      //icon: Icon(Icons.people),
-                      border: OutlineInputBorder()),
-                  onChanged: (String value) {
-                    setState(() {
-                      content.eixo[0].pessoa.formacao = value;
-                      print(content.eixo[0].pessoa.formacao);
-                    });
-                  }
-                  //controller: controller,
-                  ),
-              //Text(controller.text)
+              DropdownButton<String>(
+                items: _formacao.map((String dropDownStringItem) {
+                  return DropdownMenuItem<String>(
+                    value: dropDownStringItem,
+                    child: Text(dropDownStringItem),
+                  );
+                }).toList(),
+                onChanged: (String newValueSelected) {
+                  // Your code to execute, when a menu item is selected from drop down
+                  _onDropDownFormacaoSelected(newValueSelected);
+                },
+                value: _selectedFormacao,
+              ),
             ],
           ),
         ),
@@ -7109,9 +7128,9 @@ class _Eixo1State extends State<Eixo1>
               print("running");
               Questionario eixo = content.eixo[0];
               eixo.end();
-              String csv = Utils.questToCsv(eixo, ";");
+              String csv = Questionario.questToCsv(eixo, ";");
               Utils.write(csv,
-                      "_eixo1_${eixo.pessoa.nome.replaceAll(" ", "_")}_${eixo.pessoa.dataNascimentoText()}_;.csv")
+                      "eixo1_${eixo.pessoa.nome.replaceAll(" ", "_")}_${eixo.pessoa.dataNascimentoText()}_;.csv")
                   .then(Scaffold.of(context).showSnackBar(SnackBar(
                     content: Text("Questionário salvo!!"),
                   )))
@@ -7141,16 +7160,8 @@ class Eixo2 extends StatefulWidget {
 //EIXO 2
 class _Eixo2State extends State<Eixo2>
     with AutomaticKeepAliveClientMixin<Eixo2> {
-  @override
-  String gender = "";
-  var _currencies = [
-    'Masculino',
-    'Feminino',
-    'Transgênero',
-    'Cisgênero',
-    'Transexual',
-    'Travesti'
-  ];
+
+  String _selectedFormacao = "Fundamental incompleto";
   var _currentItemSelected = 'Masculino';
 
   void _onDropDownItemSelected(String newValueSelected) {
@@ -7161,6 +7172,14 @@ class _Eixo2State extends State<Eixo2>
     print(content.eixo[1].pessoa.genero);
   }
 
+  void _onDropDownFormacaoSelected(String newValueSelected) {
+    setState(() {
+      this._selectedFormacao = newValueSelected;
+    });
+    content.eixo[1].pessoa.formacao = newValueSelected;
+    print(content.eixo[1].pessoa.formacao);
+  }
+  @override
   Widget build(BuildContext context) {
     //EIXO2
     content.eixo[1].pessoa.nome = content.eixo[0].pessoa.nome;
@@ -7286,7 +7305,7 @@ class _Eixo2State extends State<Eixo2>
                 ),
               ),
               DropdownButton<String>(
-                items: _currencies.map((String dropDownStringItem) {
+                items: _generos.map((String dropDownStringItem) {
                   return DropdownMenuItem<String>(
                     value: dropDownStringItem,
                     child: Text(dropDownStringItem),
@@ -7354,20 +7373,19 @@ class _Eixo2State extends State<Eixo2>
                   color: Colors.black,
                 ),
               ),
-              TextField(
-                  decoration: InputDecoration(
-                      fillColor: Colors.green[50],
-                      filled: true,
-                      //icon: Icon(Icons.people),
-                      border: OutlineInputBorder()),
-                  onChanged: (String value) {
-                    setState(() {
-                      content.eixo[1].pessoa.formacao = value;
-                      print(content.eixo[1].pessoa.formacao);
-                    });
-                  }
-                  //controller: controller,
-                  ),
+              DropdownButton<String>(
+                items: _formacao.map((String dropDownStringItem) {
+                  return DropdownMenuItem<String>(
+                    value: dropDownStringItem,
+                    child: Text(dropDownStringItem),
+                  );
+                }).toList(),
+                onChanged: (String newValueSelected) {
+                  // Your code to execute, when a menu item is selected from drop down
+                  _onDropDownFormacaoSelected(newValueSelected);
+                },
+                value: _selectedFormacao,
+              ),
               //Text(controller.text)
             ],
           ),
@@ -14183,7 +14201,7 @@ class _Eixo2State extends State<Eixo2>
             onPressed: () {
               Questionario eixo = content.eixo[1];
               eixo.end();
-              String csv = Utils.questToCsv(eixo, ";");
+              String csv = Questionario.questToCsv(eixo, ";");
               Utils.write(csv,
                       "eixo2_${eixo.pessoa.nome.replaceAll(" ", "_")}_${eixo.pessoa.dataNascimentoText()}_;.csv")
                   .then(Scaffold.of(context).showSnackBar(SnackBar(
@@ -14216,14 +14234,7 @@ class Eixo3 extends StatefulWidget {
 class _Eixo3State extends State<Eixo3>
     with AutomaticKeepAliveClientMixin<Eixo3> {
   String gender = "";
-  var _currencies = [
-    'Masculino',
-    'Feminino',
-    'Transgênero',
-    'Cisgênero',
-    'Transexual',
-    'Travesti'
-  ];
+  String _selectedFormacao = "Fundamental incompleto";
   var _currentItemSelected = 'Masculino';
 
   void _onDropDownItemSelected(String newValueSelected) {
@@ -14232,6 +14243,14 @@ class _Eixo3State extends State<Eixo3>
     });
     content.eixo[2].pessoa.genero = newValueSelected;
     print(content.eixo[2].pessoa.genero);
+  }
+
+  void _onDropDownFormacaoSelected(String newValueSelected) {
+    setState(() {
+      this._selectedFormacao = newValueSelected;
+    });
+    content.eixo[0].pessoa.formacao = newValueSelected;
+    print(content.eixo[0].pessoa.formacao);
   }
 
   @override
@@ -14362,7 +14381,7 @@ class _Eixo3State extends State<Eixo3>
                     ),
                   ),
                   DropdownButton<String>(
-                    items: _currencies.map((String dropDownStringItem) {
+                    items: _generos.map((String dropDownStringItem) {
                       return DropdownMenuItem<String>(
                         value: dropDownStringItem,
                         child: Text(dropDownStringItem),
@@ -14430,20 +14449,19 @@ class _Eixo3State extends State<Eixo3>
                       color: Colors.black,
                     ),
                   ),
-                  TextField(
-                      decoration: InputDecoration(
-                          fillColor: Colors.green[50],
-                          filled: true,
-                          //icon: Icon(Icons.people),
-                          border: OutlineInputBorder()),
-                      onChanged: (String value) {
-                        setState(() {
-                          content.eixo[2].pessoa.formacao = value;
-                          print(content.eixo[2].pessoa.formacao);
-                        });
-                      }
-                      //controller: controller,
-                      ),
+                  DropdownButton<String>(
+                    items: _formacao.map((String dropDownStringItem) {
+                      return DropdownMenuItem<String>(
+                        value: dropDownStringItem,
+                        child: Text(dropDownStringItem),
+                      );
+                    }).toList(),
+                    onChanged: (String newValueSelected) {
+                      // Your code to execute, when a menu item is selected from drop down
+                      _onDropDownFormacaoSelected(newValueSelected);
+                    },
+                    value: _selectedFormacao,
+                  ),
                   //Text(controller.text)
                 ],
               ),
@@ -21258,7 +21276,7 @@ class _Eixo3State extends State<Eixo3>
                 onPressed: () {
                   Questionario eixo = content.eixo[2];
                   eixo.end();
-                  String csv = Utils.questToCsv(eixo, ";");
+                  String csv = Questionario.questToCsv(eixo, ";");
                   Utils.write(csv,
                           "eixo3_${eixo.pessoa.nome.replaceAll(" ", "_")}_${eixo.pessoa.dataNascimentoText()}_;.csv")
                       .then(Scaffold.of(context).showSnackBar(SnackBar(
