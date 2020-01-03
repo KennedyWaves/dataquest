@@ -51,7 +51,7 @@ class Questionario {
     return result;
   }
 
-  static String questToCsv(Questionario quest, [String separador]) {
+  static String toCsv(Questionario quest, [String separador]) {
     if (separador == null) {
       separador = ",";
     }

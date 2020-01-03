@@ -7128,7 +7128,7 @@ class _Eixo1State extends State<Eixo1>
               print("running");
               Questionario eixo = content.eixo[0];
               eixo.end();
-              String csv = Questionario.questToCsv(eixo, ";");
+              String csv = Questionario.toCsv(eixo, ";");
               Utils.write(csv,
                       "eixo1_${eixo.pessoa.nome.replaceAll(" ", "_")}_${eixo.pessoa.dataNascimentoText()}_;.csv")
                   .then(Scaffold.of(context).showSnackBar(SnackBar(
@@ -14201,7 +14201,7 @@ class _Eixo2State extends State<Eixo2>
             onPressed: () {
               Questionario eixo = content.eixo[1];
               eixo.end();
-              String csv = Questionario.questToCsv(eixo, ";");
+              String csv = Questionario.toCsv(eixo, ";");
               Utils.write(csv,
                       "eixo2_${eixo.pessoa.nome.replaceAll(" ", "_")}_${eixo.pessoa.dataNascimentoText()}_;.csv")
                   .then(Scaffold.of(context).showSnackBar(SnackBar(
@@ -21276,7 +21276,7 @@ class _Eixo3State extends State<Eixo3>
                 onPressed: () {
                   Questionario eixo = content.eixo[2];
                   eixo.end();
-                  String csv = Questionario.questToCsv(eixo, ";");
+                  String csv = Questionario.toCsv(eixo, ";");
                   Utils.write(csv,
                           "eixo3_${eixo.pessoa.nome.replaceAll(" ", "_")}_${eixo.pessoa.dataNascimentoText()}_;.csv")
                       .then(Scaffold.of(context).showSnackBar(SnackBar(
