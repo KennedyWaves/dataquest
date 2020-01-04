@@ -13,7 +13,7 @@ class Pessoa {
   DateFormat get dateFormat => _dateFormat;
 
   Pessoa() {
-    dataNascimento = _dateFormat.parse("01/01/1975");
+    dataNascimento = _dateFormat.parse("01/01/1990");
   }
 
   String dataNascimentoText() {
