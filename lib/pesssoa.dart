@@ -7,13 +7,13 @@ class Pessoa {
   String localidade = "";
   String genero = "";
   String observacoes = "";
-  DateFormat _dateFormat = DateFormat("dd-MM-yyyy");
+  DateFormat _dateFormat = DateFormat("dd/MM/yyyy");
   DateTime dataNascimento;
 
   DateFormat get dateFormat => _dateFormat;
 
   Pessoa() {
-    dataNascimento = _dateFormat.parse("01-01-1975");
+    dataNascimento = _dateFormat.parse("01/01/1975");
   }
 
   String dataNascimentoText() {

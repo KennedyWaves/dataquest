@@ -1,11 +1,12 @@
+import 'dart:io';
 import 'dart:math';
-import 'package:dataquest/questionario.dart';
+
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'dart:io';
 
 class Utils {
   static write(String text, String filename) async {
+    filename = filename.replaceAll("/", "-");
     print("writing...");
     PermissionStatus status = await PermissionHandler()
         .checkPermissionStatus(PermissionGroup.storage);
@@ -19,22 +20,22 @@ class Utils {
       case PermissionStatus.granted:
         final directory = await getExternalStorageDirectory();
         bool exists =
-            await Directory('${directory.path}/dataquest/quests').exists();
+        await Directory('${directory.path}/dataquest/quests').exists();
         if (!exists) {
           new Directory('${directory.path}/dataquest/quests')
               .create(recursive: true)
-              // The created directory is returned as a Future.
+          // The created directory is returned as a Future.
               .then((Directory directory) {
             print(directory.path);
           });
         }
         print('LOCATION ${directory.path}/dataquest/quests');
         final file = File('${directory.path}/dataquest/quests/$filename');
-        await file.writeAsString(text);
+        await file.writeAsString(text, mode: FileMode.write);
         print("CARALHO SAVED!");
         break;
       case PermissionStatus.denied:
-        // do something
+      // do something
         print("CARALHO DENIED!");
         break;
       case PermissionStatus.disabled:

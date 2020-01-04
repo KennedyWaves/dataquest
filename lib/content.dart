@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
+
+import 'likert.dart';
 import 'questionario.dart';
 import 'tema.dart';
-import 'likert.dart';
 
 class Content {
 //questionarios
@@ -22,7 +24,7 @@ class Content {
     eixo[0].start();
     eixo[0].eixo = "EIXO: SUSTENTABILIDADES E BOM VIVER";
     //TEMA 0
-    eixo[0].tema.add(new Tema("QUALIDADE DA MORADIA"));
+    eixo[0].tema.add(new Tema("QUALIDADE DA MORADIA", cor: Colors.green));
     // 10 PERGUNTAS
     eixo[0]
         .tema[0]
@@ -55,7 +57,8 @@ class Content {
     eixo[0].tema[0].questao.add(
         new Likert("Você possui horta e/ou árvores frutíferas em sua casa?"));
     //TEMA 1
-    eixo[0].tema.add(new Tema("GESTÃO AMBIENTAL E PATRIMONIAL"));
+    eixo[0].tema.add(
+        new Tema("GESTÃO AMBIENTAL E PATRIMONIAL", cor: Colors.purple));
     // 10 PERGUNTAS
     eixo[0].tema[1].questao.add(new Likert(
         "Existe algum planejamento na comunidade para uso do território?"));
@@ -80,7 +83,7 @@ class Content {
     eixo[0].tema[1].questao.add(
         new Likert("Na escola da comunidade existe educação patrimonial?"));
     //TEMA 2
-    eixo[0].tema.add(new Tema("ECONOMIA CIRCULAR"));
+    eixo[0].tema.add(new Tema("ECONOMIA CIRCULAR", cor: Colors.orange));
     // 10 PERGUNTAS
     eixo[0].tema[2].questao.add(new Likert(
         "Você acredita que a área de mata é suficiente para comunidade?"));
@@ -105,7 +108,7 @@ class Content {
         .questao
         .add(new Likert("Você faz compostagem dos restos orgânicos?"));
     //TEMA 3
-    eixo[0].tema.add(new Tema("DESENVOLVIMENTO LOCAL"));
+    eixo[0].tema.add(new Tema("DESENVOLVIMENTO LOCAL", cor: Colors.pink));
     // 10 PERGUNTAS
     eixo[0]
         .tema[3]
@@ -134,7 +137,8 @@ class Content {
     eixo[0].tema[3].questao.add(new Likert(
         "Existem informações e levantamentos de dados sobre a comunidade?"));
     //TEMA 4
-    eixo[0].tema.add(new Tema("INOVAÇÃO E USO DO PATRIMÔNIO"));
+    eixo[0].tema.add(
+        new Tema("INOVAÇÃO E USO DO PATRIMÔNIO", cor: Colors.teal));
     // 10 PERGUNTAS
     eixo[0].tema[4].questao.add(new Likert(
         "Para resolver alguns problemas cotidianos você usa a sabedoria dos antigos (idosos, parentes, tradição oral)?"));
@@ -157,7 +161,7 @@ class Content {
     eixo[0].tema[4].questao.add(new Likert(
         "Você aproveita a energia do sol/a luz solar para facilitar os trabalhos do dia a dia?"));
     //TEMA 5
-    eixo[0].tema.add(new Tema("BOM VIVER"));
+    eixo[0].tema.add(new Tema("BOM VIVER", cor: Colors.red));
     // 10 PERGUNTAS
     eixo[0].tema[5].questao.add(new Likert(
         "Você realiza atividades coletivas ou mutirão com seus vizinhos para a solução de problemas da comunidade?"));
@@ -189,7 +193,7 @@ class Content {
     eixo[1].start();
     eixo[1].eixo = "EIXO: RAZÕES HUMANAS";
     //TEMA 0
-    eixo[1].tema.add(new Tema("EDUCAÇÃO"));
+    eixo[1].tema.add(new Tema("EDUCAÇÃO", cor: Colors.green));
     // 10 PERGUNTAS
     eixo[1]
         .tema[0]
@@ -220,7 +224,7 @@ class Content {
     eixo[1].tema[0].questao.add(new Likert(
         "A escola (alunos/professores) participa de eventos em outros lugares?"));
     //TEMA 1
-    eixo[1].tema.add(new Tema("SEGURANÇA E TOLERÂNCIA"));
+    eixo[1].tema.add(new Tema("SEGURANÇA E TOLERÂNCIA", cor: Colors.purple));
     // 10 PERGUNTAS
     eixo[1]
         .tema[1]
@@ -257,7 +261,7 @@ class Content {
     eixo[1].tema[1].questao.add(
         new Likert("As pessoas usam seus pertences sem pedirem autorização?"));
     //TEMA 2
-    eixo[1].tema.add(new Tema("SAÚDE E ALIMENTAÇÃO"));
+    eixo[1].tema.add(new Tema("SAÚDE E ALIMENTAÇÃO", cor: Colors.orange));
     // 10 PERGUNTAS
     eixo[1].tema[2].questao.add(new Likert("Você come bem todos os dias?"));
     eixo[1].tema[2].questao.add(new Likert(
@@ -285,7 +289,7 @@ class Content {
     eixo[1].tema[2].questao.add(new Likert(
         "Você acredita que as instituições de Estado garantem saúde de qualidade?"));
     //TEMA 3
-    eixo[1].tema.add(new Tema("COMUNIDADE"));
+    eixo[1].tema.add(new Tema("COMUNIDADE", cor: Colors.pink));
     // 10 PERGUNTAS
     eixo[1].tema[3].questao.add(new Likert(
         "Existe uma boa organização das moradias e de outros espaços em sua comunidade?"));
@@ -316,7 +320,8 @@ class Content {
         .questao
         .add(new Likert("Você tem tudo o que é necessário para se viver bem?"));
     //TEMA 4
-    eixo[1].tema.add(new Tema("TRABALHO/OCUPAÇÃO, RENDA E CONSUMO"));
+    eixo[1].tema.add(
+        new Tema("TRABALHO/OCUPAÇÃO, RENDA E CONSUMO", cor: Colors.teal));
     // 10 PERGUNTAS
     eixo[1].tema[4].questao.add(new Likert(
         "O dinheiro que sua família ganha é o bastante para comprar o que necessita?"));
@@ -345,7 +350,8 @@ class Content {
         .questao
         .add(new Likert("Seu trabalho só pode ser realizado coletivamente?"));
     //TEMA 5
-    eixo[1].tema.add(new Tema("COMUNICAÇÃO E INTERAÇÃO SOCIAL"));
+    eixo[1].tema.add(
+        new Tema("COMUNICAÇÃO E INTERAÇÃO SOCIAL", cor: Colors.red));
     // 10 PERGUNTAS
     eixo[1].tema[5].questao.add(new Likert(
         "Você tem acesso à Internet/redes sociais em sua comunidade?"));
@@ -374,7 +380,7 @@ class Content {
     eixo[2].start();
     eixo[2].eixo = "EIXO: CONSEQUÊNCIAS AMBIENTAIS";
     //TEMA 0
-    eixo[2].tema.add(new Tema("BIOINDICADORES"));
+    eixo[2].tema.add(new Tema("BIOINDICADORES", cor: Colors.green));
     // 10 PERGUNTAS
     eixo[2].tema[0].questao.add(new Likert(
         "Você tem observado alteração na quantidade de algum animal ou inseto?"));
@@ -397,7 +403,7 @@ class Content {
     eixo[2].tema[0].questao.add(new Likert(
         "Existem muitos casos de aborto (humanos e animais) na comunidade?"));
     //TEMA 1
-    eixo[2].tema.add(new Tema("GEOINDICADORES"));
+    eixo[2].tema.add(new Tema("GEOINDICADORES", cor: Colors.purple));
     // 10 PERGUNTAS
     eixo[2].tema[1].questao.add(new Likert(
         "A comunidade degrada a natureza (queimada, desmatamento, poluição)?"));
@@ -429,7 +435,7 @@ class Content {
     eixo[2].tema[1].questao.add(new Likert(
         "As vazantes dos rios têm sofrido alterações nos últimos anos?"));
     //TEMA 2
-    eixo[2].tema.add(new Tema("SEMIÓTICA CORPORAL"));
+    eixo[2].tema.add(new Tema("SEMIÓTICA CORPORAL", cor: Colors.orange));
     // 10 PERGUNTAS
     eixo[2]
         .tema[2]
@@ -462,7 +468,7 @@ class Content {
     eixo[2].tema[2].questao.add(new Likert(
         "Você observa a diminuição na taxa de natalidade em sua família nos últimos 5 anos?"));
     //TEMA 3
-    eixo[2].tema.add(new Tema("SEMIÓTICA AMBIENTAL"));
+    eixo[2].tema.add(new Tema("SEMIÓTICA AMBIENTAL", cor: Colors.pink));
     // 10 PERGUNTAS
     eixo[2].tema[3].questao.add(new Likert(
         "O governo (federal, estadual, municipal) protege o meio ambiente da comunidade?"));
@@ -489,7 +495,7 @@ class Content {
     eixo[2].tema[3].questao.add(
         new Likert("Os problemas ambientais são permanentes e irreversíveis?"));
     //TEMA 4
-    eixo[2].tema.add(new Tema("ATIVIDADE ECONÔMICA"));
+    eixo[2].tema.add(new Tema("ATIVIDADE ECONÔMICA", cor: Colors.teal));
     // 10 PERUNTAS
     eixo[2].tema[4].questao.add(new Likert(
         "Sua família usa produtos (cascas, ervas, plantas, raízes) retirados da floresta/mata/mangue?"));
@@ -522,7 +528,8 @@ class Content {
     eixo[2].tema[4].questao.add(
         new Likert("Sua família ganha pelo menos um salário mínimo mensal?"));
     //TEMA 5
-    eixo[2].tema.add(new Tema("CIDADANIA E RELAÇÕES DE PODER"));
+    eixo[2].tema.add(
+        new Tema("CIDADANIA E RELAÇÕES DE PODER", cor: Colors.red));
     // 10 PEUNTAS
     eixo[2]
         .tema[5]

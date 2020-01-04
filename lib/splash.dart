@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
+
+import 'package:flutter/material.dart';
+
 import 'home.dart';
 
 class splash extends StatefulWidget {
@@ -22,7 +24,7 @@ class _splash_state extends State<splash> {
                   "  DataQuest v0.1.6.0",
                   style: TextStyle(color: Colors.white),
                 ),
-                new Padding(padding: EdgeInsets.only(bottom: 50, left: 10))
+                new Padding(padding: EdgeInsets.only(bottom: 7, left: 10))
               ],
             ),
             new Center(
