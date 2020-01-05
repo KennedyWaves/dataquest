@@ -18,19 +18,21 @@ class _EixoState extends State<EixoScreen>
 
   _EixoState(this.data);
 
+  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  final focus = FocusNode();
+
   //VARIAVEIS E MÉTODOS DE INTERFACE
   var _genero = [
-    'Gênero',
     'Masculino',
     'Feminino',
     'Transgênero',
     'Cisgênero',
     'Transexual',
-    'Travesti'
+    'Travesti',
+    ''
   ];
-  String _selectedGenero = 'Gênero';
+  String _selectedGenero = '';
   List<String> _formacao = [
-    'Formação',
     'Fundamental incompleto',
     'Fundamental completo',
     'Médio incompleto',
@@ -38,9 +40,10 @@ class _EixoState extends State<EixoScreen>
     'Superior incompleto',
     'Superior completo',
     'Pós-graduação incompleta',
-    'Pós-graduação'
+    'Pós-graduação',
+    ''
   ];
-  String _selectedFormacao = "Formação";
+  String _selectedFormacao = '';
   String _dataNascimentoText = "01/01/1980";
 
   void _generoOnDropDown(String value) {
@@ -81,147 +84,150 @@ class _EixoState extends State<EixoScreen>
           ),
         ),
       ),
-      // ENTRADA NOME
-      Container(
-        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
-        child: Center(
-          child: TextField(
-              decoration: InputDecoration(
-                icon: Icon(Icons.people),
-                //hintText: "Nome Completo",
-                labelText: 'Nome completo',
-                //border: InputBorder.none
-              ),
-              onChanged: (String value) {
-                setState(() {
-                  data.pessoa.nome = value;
-                  print(data.pessoa.nome);
-                });
-              }
-            //controller: controller,
-          ),
-        ),
-      ),
-      //ENTRADA IDADE
-      Container(
+      //form
+      new Container(
           margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
           child: Center(
-            child: InkWell(
-              onTap: () {
-                showDatePicker(
-                    context: context,
-                    initialDate: data.pessoa.dataNascimento == null
-                        ? DateTime.now()
-                        : data.pessoa.dataNascimento,
-                    firstDate: DateTime(1925),
-                    lastDate: DateTime(2019),
-                    locale: Locale("pt"))
-                    .then((date) {
-                  setState(() {
-                    data.pessoa.dataNascimento = date;
-                    _dataNascimentoText = data.pessoa.dataNascimentoText();
-                    dnController.text = _dataNascimentoText;
-                  });
-                }); // Call Function that has showDatePicker()
-              },
-              child: IgnorePointer(
-                child: new TextField(
-                  controller: dnController,
+              child: new Form(
+            key: _formKey,
+            autovalidate: true,
+            child: new Column(
+              children: <Widget>[
+                // ENTRADA NOME
+                TextFormField(
                   decoration: InputDecoration(
-                    icon: Icon(Icons.calendar_today),
+                    icon: Icon(Icons.people),
                     //hintText: "Nome Completo",
-                    labelText: 'Data de nascimento',
+                    labelText: 'Nome completo',
                     //border: InputBorder.none
                   ),
+                  onChanged: (String value) {
+                    setState(() {
+                      data.pessoa.nome = value;
+                      print(data.pessoa.nome);
+                    });
+                  },
+                  //controller: controller,
                 ),
-              ),
+                //ENTRADA IDADE
+                InkWell(
+                  onTap: () {
+                    showDatePicker(
+                            context: context,
+                            initialDate: data.pessoa.dataNascimento == null
+                                ? DateTime.now()
+                                : data.pessoa.dataNascimento,
+                            firstDate: DateTime(1925),
+                            lastDate: DateTime(2019),
+                            locale: Locale("pt"))
+                        .then((date) {
+                      setState(() {
+                        data.pessoa.dataNascimento = date;
+                        _dataNascimentoText = data.pessoa.dataNascimentoText();
+                        dnController.text = _dataNascimentoText;
+                      });
+                    }); // Call Function that has showDatePicker()
+                  },
+                  child: IgnorePointer(
+                    child: new TextFormField(
+                      controller: dnController,
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.calendar_today),
+                        //hintText: "Nome Completo",
+                        labelText: 'Data de nascimento',
+                        //border: InputBorder.none
+                      ),
+                    ),
+                  ),
+                ),
+                //ENDRADA GENERO
+                new FormField(builder: (FormFieldState state) {
+                  return InputDecorator(
+                    decoration: InputDecoration(
+                      icon: const Icon(Icons.wc),
+                      labelText: 'Gênero',
+                    ),
+                    isEmpty: _selectedGenero == '',
+                    child: new DropdownButtonHideUnderline(
+                      child: new DropdownButton(
+                        value: _selectedGenero,
+                        isDense: true,
+                        onChanged: (String newValueSelected) {
+                          // Your code to execute, when a menu item is selected from drop down
+                          _generoOnDropDown(newValueSelected);
+                        },
+                        items: _genero.map((String dropDownStringItem) {
+                          return DropdownMenuItem<String>(
+                            value: dropDownStringItem,
+                            child: Text(dropDownStringItem),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  );
+                }),
+                // ENTRADA ATIVIDADE LABORAL
+                new TextFormField(
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.work),
+                      //hintText: "Nome Completo",
+                      labelText: 'Atividade laboral',
+                      //border: InputBorder.none
+                    ),
+                    onChanged: (String value) {
+                      setState(() {
+                        data.pessoa.trabalho = value;
+                        print(data.pessoa.trabalho);
+                      });
+                    }
+                    //controller: controller,
+                    ),
+                // ENTRADA FORMAÇÃO
+                new FormField(builder: (FormFieldState state) {
+                  return InputDecorator(
+                    decoration: InputDecoration(
+                      icon: const Icon(Icons.school),
+                      labelText: 'Formação',
+                    ),
+                    isEmpty: _selectedFormacao == '',
+                    child: new DropdownButtonHideUnderline(
+                      child: new DropdownButton(
+                        value: _selectedFormacao,
+                        isDense: true,
+                        onChanged: (String newValueSelected) {
+                          // Your code to execute, when a menu item is selected from drop down
+                          _formacaoOnDropDown(newValueSelected);
+                        },
+                        items: _formacao.map((String dropDownStringItem) {
+                          return DropdownMenuItem<String>(
+                            value: dropDownStringItem,
+                            child: Text(dropDownStringItem),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  );
+                }),
+                //ENTRADA LOCALIDADE
+                TextFormField(
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.place),
+                      //hintText: "Nome Completo",
+                      labelText: 'Localidade',
+                      //border: InputBorder.none
+                    ),
+                    onChanged: (String value) {
+                      setState(() {
+                        data.pessoa.localidade = value;
+                        print(data.pessoa.localidade);
+                      });
+                    }
+                    //controller: controller,
+                    )
+              ],
             ),
-          )),
+          ))),
 
-      //ENDRADA GENERO
-      Container(
-        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
-        child: Center(
-          child: DropdownButton<String>(
-            items: _genero.map((String dropDownStringItem) {
-              return DropdownMenuItem<String>(
-                value: dropDownStringItem,
-                child: Text(dropDownStringItem),
-              );
-            }).toList(),
-            onChanged: (String newValueSelected) {
-              // Your code to execute, when a menu item is selected from drop down
-              _generoOnDropDown(newValueSelected);
-            },
-            value: _selectedGenero,
-          ),
-          //Text(controller.text)
-        ),
-      ),
-      // ENTRADA ATIVIDADE LABORAL
-      Container(
-        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
-        child: Center(
-          child: TextField(
-              decoration: InputDecoration(
-                icon: Icon(Icons.work),
-                //hintText: "Nome Completo",
-                labelText: 'Atividade laboral',
-                //border: InputBorder.none
-              ),
-              onChanged: (String value) {
-                setState(() {
-                  data.pessoa.trabalho = value;
-                  print(data.pessoa.trabalho);
-                });
-              }
-            //controller: controller,
-          ),
-        ),
-      ),
-      // ENTRADA FORMAÇÃO
-      Container(
-        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
-        child: Center(
-          child: DropdownButton<String>(
-            items: _formacao.map((String dropDownStringItem) {
-              return DropdownMenuItem<String>(
-                value: dropDownStringItem,
-                child: Text(dropDownStringItem),
-              );
-            }).toList(),
-            onChanged: (String newValueSelected) {
-              // Your code to execute, when a menu item is selected from drop down
-              _formacaoOnDropDown(newValueSelected);
-            },
-            value: _selectedFormacao,
-          ),
-
-        ),
-      ),
-      // ENTRADA LOCAlIDADE
-      Container(
-        margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
-        child: Center(
-          child:
-          TextField(
-              decoration: InputDecoration(
-                icon: Icon(Icons.place),
-                //hintText: "Nome Completo",
-                labelText: 'Localidade',
-                //border: InputBorder.none
-              ),
-              onChanged: (String value) {
-                setState(() {
-                  data.pessoa.localidade = value;
-                  print(data.pessoa.localidade);
-                });
-              }
-            //controller: controller,
-          ),
-          //Text(controller.text)
-        ),
-      ),
       //INFORMATIVO SOBRE ESCALA
       Container(
         color: Colors.white,
@@ -248,8 +254,7 @@ class _EixoState extends State<EixoScreen>
       new Container(
         margin: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
         child: Center(
-          child:
-          TextField(
+          child: TextField(
               decoration: InputDecoration(
                 icon: Icon(Icons.edit),
                 //hintText: "Nome Completo",
@@ -262,8 +267,8 @@ class _EixoState extends State<EixoScreen>
                   print(data.pessoa.observacoes);
                 });
               }
-            //controller: controller,
-          ),
+              //controller: controller,
+              ),
         ),
       ),
     );
@@ -278,16 +283,14 @@ class _EixoState extends State<EixoScreen>
               eixo.end();
               String csv = Questionario.toCsv(eixo, ";");
               Utils.write(csv,
-                  "eixo1_${Utils.getInitials(eixo.pessoa.nome)}_${Utils
-                      .getInitials(eixo.pessoa.trabalho)}_${eixo.pessoa
-                      .dataNascimentoText()}_;.csv")
+                      "eixo1_${Utils.getInitials(eixo.pessoa.nome)}_${Utils.getInitials(eixo.pessoa.trabalho)}_${eixo.pessoa.dataNascimentoText()}_;.csv")
                   .then(Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text("Questionário salvo!!"),
-              )))
+                    content: Text("Questionário salvo!!"),
+                  )))
                   .catchError(Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text("erro ao salvar questionário!!!!!!"),
-                backgroundColor: Color.fromRGBO(200, 0, 0, 1),
-              )));
+                    content: Text("erro ao salvar questionário!!!!!!"),
+                    backgroundColor: Color.fromRGBO(200, 0, 0, 1),
+                  )));
             },
             icon: Icon(Icons.save),
             label: Text('Salvar Formulário'),
@@ -357,7 +360,7 @@ class _EixoState extends State<EixoScreen>
                 new Radio(
                   value: 0,
                   groupValue:
-                  data.tema[indexTema].questao[indexPergunta].resposta,
+                      data.tema[indexTema].questao[indexPergunta].resposta,
                   onChanged: (T) {
                     setState(() {
                       data.tema[indexTema].questao[indexPergunta].resposta = T;
@@ -374,7 +377,7 @@ class _EixoState extends State<EixoScreen>
                 new Radio(
                   value: 1,
                   groupValue:
-                  data.tema[indexTema].questao[indexPergunta].resposta,
+                      data.tema[indexTema].questao[indexPergunta].resposta,
                   onChanged: (T) {
                     setState(() {
                       data.tema[indexTema].questao[indexPergunta].resposta = T;
@@ -393,7 +396,7 @@ class _EixoState extends State<EixoScreen>
                 new Radio(
                   value: 2,
                   groupValue:
-                  data.tema[indexTema].questao[indexPergunta].resposta,
+                      data.tema[indexTema].questao[indexPergunta].resposta,
                   onChanged: (T) {
                     setState(() {
                       data.tema[indexTema].questao[indexPergunta].resposta = T;
@@ -410,7 +413,7 @@ class _EixoState extends State<EixoScreen>
                 new Radio(
                   value: 3,
                   groupValue:
-                  data.tema[indexTema].questao[indexPergunta].resposta,
+                      data.tema[indexTema].questao[indexPergunta].resposta,
                   onChanged: (T) {
                     setState(() {
                       data.tema[indexTema].questao[indexPergunta].resposta = T;
@@ -427,7 +430,7 @@ class _EixoState extends State<EixoScreen>
                 new Radio(
                   value: 4,
                   groupValue:
-                  data.tema[indexTema].questao[indexPergunta].resposta,
+                      data.tema[indexTema].questao[indexPergunta].resposta,
                   onChanged: (T) {
                     setState(() {
                       data.tema[indexTema].questao[indexPergunta].resposta = T;
