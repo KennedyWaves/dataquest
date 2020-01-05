@@ -13,8 +13,8 @@ class Questionario {
   String formacao;
   String localidade;
   String genero;
-
-  Questionario();
+  int id;
+  Questionario(this.id);
 
   void start() {
     pessoa = new Pessoa();

@@ -283,7 +283,7 @@ class _EixoState extends State<EixoScreen>
               eixo.end();
               String csv = Questionario.toCsv(eixo, ";");
               Utils.write(csv,
-                      "eixo1_${Utils.getInitials(eixo.pessoa.nome)}_${Utils.getInitials(eixo.pessoa.trabalho)}_${eixo.pessoa.dataNascimentoText()}_;.csv")
+                      "eixo${eixo.id}_${Utils.getInitials(eixo.pessoa.nome)}_${Utils.getInitials(eixo.pessoa.trabalho)}_${eixo.pessoa.dataNascimentoText()}_;.csv")
                   .then(Scaffold.of(context).showSnackBar(SnackBar(
                     content: Text("Questionário salvo!!"),
                   )))

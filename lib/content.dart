@@ -7,9 +7,9 @@ import 'tema.dart';
 class Content {
 //questionarios
   List<Questionario> eixo = <Questionario>[
-    new Questionario(),
-    new Questionario(),
-    new Questionario()
+    new Questionario(1),
+    new Questionario(2),
+    new Questionario(3)
   ];
 
   Content() {
