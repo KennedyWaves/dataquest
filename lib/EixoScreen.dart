@@ -37,7 +37,7 @@ class _EixoState extends State<EixoScreen>
     'Médio completo',
     'Superior incompleto',
     'Superior completo',
-    'Pós-graduação imcompleta',
+    'Pós-graduação incompleta',
     'Pós-graduação'
   ];
   String _selectedFormacao = "Formação";
@@ -278,7 +278,8 @@ class _EixoState extends State<EixoScreen>
               eixo.end();
               String csv = Questionario.toCsv(eixo, ";");
               Utils.write(csv,
-                  "eixo1_${eixo.pessoa.nome.replaceAll(" ", "_")}_${eixo.pessoa
+                  "eixo1_${Utils.getInitials(eixo.pessoa.nome)}_${Utils
+                      .getInitials(eixo.pessoa.trabalho)}_${eixo.pessoa
                       .dataNascimentoText()}_;.csv")
                   .then(Scaffold.of(context).showSnackBar(SnackBar(
                 content: Text("Questionário salvo!!"),
@@ -295,6 +296,9 @@ class _EixoState extends State<EixoScreen>
         ),
       ),
     );
+    result.add(new Padding(
+      padding: EdgeInsets.only(bottom: 20),
+    ));
     //for para percorrer temas
     //somar temas com a lista final;
     //result += buildTema(data.tema[0],null);

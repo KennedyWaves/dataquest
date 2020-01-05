@@ -5,16 +5,21 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class Utils {
+
+  static String getInitials(String name) {
+    String result = "";
+    var nameList = name.toLowerCase().split(" ");
+    for (String part in nameList) {
+      result += part[0];
+    }
+    return result;
+  }
+
   static write(String text, String filename) async {
     filename = filename.replaceAll("/", "-");
     print("writing...");
     PermissionStatus status = await PermissionHandler()
         .checkPermissionStatus(PermissionGroup.storage);
-    if (status != PermissionStatus.granted) {
-      Map<PermissionGroup, PermissionStatus> request = await PermissionHandler()
-          .requestPermissions([PermissionGroup.storage]);
-      status = request[PermissionGroup.storage];
-    }
     print("SELECT");
     switch (status) {
       case PermissionStatus.granted:

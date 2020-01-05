@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'home.dart';
 
-class splash extends StatefulWidget {
+class Splash extends StatefulWidget {
   @override
-  _splash_state createState() => _splash_state();
+  SplashState createState() => SplashState();
 }
 
-class _splash_state extends State<splash> {
+class SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

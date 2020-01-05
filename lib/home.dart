@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
+
 import 'TelaQuestionario.dart';
 
 class Home extends StatefulWidget {
@@ -189,12 +191,20 @@ class HomeState extends State<Home> {
     ));
   }
 
+  void askPermission() async {
+    PermissionStatus status = await PermissionHandler()
+        .checkPermissionStatus(PermissionGroup.storage);
+    if (status != PermissionStatus.granted) {
+      await PermissionHandler().requestPermissions([PermissionGroup.storage]);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     populateQuestsList();
     populateQuestsOutbox();
     populateWidgetOptions();
-
+    askPermission();
     return Scaffold(
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
