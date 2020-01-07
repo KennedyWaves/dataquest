@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-
 import 'TelaQuestionario.dart';
 
 class Home extends StatefulWidget {
@@ -22,104 +21,6 @@ class HomeState extends State<Home> {
     setState(() {
       _selectedIndex = index;
     });
-  }
-
-  void populateQuestsList() {
-    _questsList = <Widget>[];
-    _questsList.add(new Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const ListTile(
-            title: Text('Fulano Siclano da Silva'),
-            subtitle: Text('Consequências ambientais (06/12/2019)'),
-          ),
-          ButtonTheme.bar(
-            // make buttons use the appropriate styles for cards
-            child: ButtonBar(
-              children: <Widget>[
-                FlatButton(
-                  child: const Text('EXIBIR'),
-                  onPressed: () {
-                    /* ... */
-                  },
-                ),
-                FlatButton(
-                  child: const Text('EDITAR'),
-                  onPressed: () {
-                    /* ... */
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ));
-    _questsList.add(new Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const ListTile(
-            title: Text('Beutrano Beutrame da Silva'),
-            subtitle: Text('Razões humanas (06/12/2019)'),
-          ),
-          ButtonTheme.bar(
-            // make buttons use the appropriate styles for cards
-            child: ButtonBar(
-              children: <Widget>[
-                FlatButton(
-                  child: const Text('EXIBIR'),
-                  onPressed: () {
-                    /* ... */
-                  },
-                ),
-                FlatButton(
-                  child: const Text('EDITAR'),
-                  onPressed: () {
-                    showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime.now(),
-                        lastDate: DateTime(1900));
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ));
-    _questsList.add(new Card(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const ListTile(
-            title: Text('John Lorem Doe'),
-            subtitle: Text('Sustentabilidade e bom viver (06/12/2019)'),
-          ),
-          ButtonTheme.bar(
-            // make buttons use the appropriate styles for cards
-            child: ButtonBar(
-              children: <Widget>[
-                FlatButton(
-                  child: const Text('EXIBIR'),
-                  onPressed: () {
-                    /* ... */
-                  },
-                ),
-                FlatButton(
-                  child: const Text('EDITAR'),
-                  onPressed: () {
-                    /* ... */
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ));
   }
 
   void populateQuestsOutbox() {
@@ -162,14 +63,26 @@ class HomeState extends State<Home> {
   void populateWidgetOptions() {
     _widgetOptions = <Widget>[];
     _widgetOptions.add(new Scaffold(
-      body: new Center(
-          child: new Padding(
-        padding: EdgeInsets.all(20),
-        child: new Text(
-          'Toque em + para iniciar um novo questionário.',
-          style: optionStyle,
-        ),
-      )),
+      body:
+          new Stack(
+        children: <Widget>[
+          new Padding(
+            padding: EdgeInsets.only(left: 20,top: 40),
+            child: new Text(
+              '"INDICADORES ANTRÓPICOS"\n\nDataQuest 0.1 - PROCAD-AMAZÔNIA\n\nDesenvolvido por Bel. Kennedy Souza e Bel. Igor Aviz\nCordenação: Prof. Dr. Marcos Seruffo\n\nUniversidade Federal do Pará',
+              style: new TextStyle(fontSize: 14,color: Colors.grey),
+            ),
+          ),
+          new Center(child:
+          new Padding(
+            padding: EdgeInsets.all(20),
+            child: new Text(
+              'Toque em + para iniciar um novo questionário.',
+              style: optionStyle,
+            ),
+          ))
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
           Navigator.of(context).push(
@@ -178,11 +91,6 @@ class HomeState extends State<Home> {
         tooltip: 'Increment Counter',
         child: const Icon(Icons.add),
       ),
-    ));
-    _widgetOptions.add(new Scaffold(
-      body: new Padding(
-          padding: EdgeInsets.all(5),
-          child: new ListView(children: _questsList)),
     ));
     _widgetOptions.add(new Scaffold(
       body: new Padding(
@@ -201,7 +109,6 @@ class HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    populateQuestsList();
     populateQuestsOutbox();
     populateWidgetOptions();
     askPermission();
@@ -214,10 +121,6 @@ class HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(Icons.question_answer),
             title: Text('Responder'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list),
-            title: Text('Listar'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.cloud_upload),

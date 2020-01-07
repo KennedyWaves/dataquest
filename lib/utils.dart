@@ -5,7 +5,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class Utils {
-
   static String getInitials(String name) {
     String result = "";
     var nameList = name.toLowerCase().split(" ");
@@ -25,22 +24,27 @@ class Utils {
       case PermissionStatus.granted:
         final directory = await getExternalStorageDirectory();
         bool exists =
-        await Directory('${directory.path}/dataquest/quests').exists();
+            await Directory('${directory.path}/dataquest/quests').exists();
+        void save() async {
+          print('LOCATION ${directory.path}/dataquest/quests');
+          final file = File('${directory.path}/dataquest/quests/$filename');
+          await file.writeAsString(text, mode: FileMode.write);
+          print("CARALHO SAVED!");
+        }
         if (!exists) {
           new Directory('${directory.path}/dataquest/quests')
               .create(recursive: true)
-          // The created directory is returned as a Future.
+              // The created directory is returned as a Future.
               .then((Directory directory) {
             print(directory.path);
+            save();
           });
+        } else {
+          save();
         }
-        print('LOCATION ${directory.path}/dataquest/quests');
-        final file = File('${directory.path}/dataquest/quests/$filename');
-        await file.writeAsString(text, mode: FileMode.write);
-        print("CARALHO SAVED!");
         break;
       case PermissionStatus.denied:
-      // do something
+        // do something
         print("CARALHO DENIED!");
         break;
       case PermissionStatus.disabled:
