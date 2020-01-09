@@ -1,6 +1,8 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'home.dart';
+
+import 'homeScreen.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -47,7 +49,9 @@ class SplashState extends State<Splash> {
   }
 
   onDoneLoading() async {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
+    HomeState.permissionStatus = await HomeState.askPermission();
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => HomeScreen()));
     Navigator.of(context)
         .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
   }

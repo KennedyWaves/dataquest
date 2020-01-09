@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'pessoaScreen.dart';
-import 'eixoScreen.dart';
+
 import 'content.dart';
+import 'eixoScreen.dart';
+import 'pessoaScreen.dart';
 
 Content content;
 @override
-class TelaDeQuestionario extends StatefulWidget {
+class EntrevistaScreen extends StatefulWidget {
   @override
-  QuestionState createState() => QuestionState();
+  EntrevistaState createState() => EntrevistaState();
 }
 ///
 //TAB BAR VIEW
-class QuestionState extends State<TelaDeQuestionario>
-{
-  QuestionState(){
+class EntrevistaState extends State<EntrevistaScreen> {
+  EntrevistaState() {
     content = new Content();
     Content.entrevista.start();
   }

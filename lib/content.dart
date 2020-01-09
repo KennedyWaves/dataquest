@@ -1,15 +1,16 @@
 import 'package:dataquest/entrevista.dart';
 import 'package:flutter/material.dart';
+
 import 'eixo.dart';
 import 'likert.dart';
 import 'tema.dart';
 
 class Content {
-  
+  static String folderPath = "/dataquest/quests";
   static Entrevista entrevista;
 //questionarios
   static void build() {
-    print("A ENTREVISTA FOI CONSTRUIDA!");
+    //print("A ENTREVISTA FOI CONSTRUIDA!");
     reset();
     entrevista.eixo = <Eixo>[
       new Eixo(1,"EIXO: SUSTENTABILIDADES E BOM VIVER"),
@@ -22,12 +23,12 @@ class Content {
   }
 
   Content(){
-    print("CONTENT CONSTRUCTOR!");
+    //print("CONTENT CONSTRUCTOR!");
     build();
   }
 
   static void reset(){
-    print("A ENTREVISTA FOI RESETADA!");
+    //print("A ENTREVISTA FOI RESETADA!");
     entrevista = new Entrevista();
   }
 

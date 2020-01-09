@@ -1,6 +1,7 @@
-import 'pesssoa.dart';
-import 'eixo.dart';
 import 'package:intl/intl.dart';
+
+import 'eixo.dart';
+import 'pesssoa.dart';
 
 class Entrevista {
   Pessoa pessoa = new Pessoa();
@@ -9,7 +10,7 @@ class Entrevista {
   String startTime;
 
   void start() {
-    print("A ENTREVISTA COMEÇOU!");
+    //print("A ENTREVISTA COMEÇOU!");
     startTime = new DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now());
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+
 import 'content.dart';
+import 'homeScreen.dart';
 import 'utils.dart';
 
 class EixoScreen extends StatefulWidget {
@@ -10,15 +11,17 @@ class EixoScreen extends StatefulWidget {
   EixoScreen(this.eixoIndex, [this.createSave]);
 
   @override
-  State createState() => new _EixoState(eixoIndex,createSave);
+  State createState() => new _EixoState(eixoIndex, createSave);
 }
 
 class _EixoState extends State<EixoScreen>
     with AutomaticKeepAliveClientMixin<EixoScreen> {
   int eixoIndex;
   bool createSave;
-  _EixoState(this.eixoIndex,[this.createSave]);
-    //constrói a tela do questionário/eixo
+
+  _EixoState(this.eixoIndex, [this.createSave]);
+
+  //constrói a tela do questionário/eixo
   Scaffold buildEixo() {
     createSave = createSave ?? false;
     //adiciona o cabeçalho e informações básicas
@@ -59,7 +62,7 @@ class _EixoState extends State<EixoScreen>
         ),
       ),
     ];
-    for (int x = 0; x <Content.entrevista.eixo[eixoIndex].tema.length; x++) {
+    for (int x = 0; x < Content.entrevista.eixo[eixoIndex].tema.length; x++) {
       result.add(buildTema(x));
     }
 
@@ -76,7 +79,7 @@ class _EixoState extends State<EixoScreen>
               ),
               onChanged: (String value) {
                 setState(() {
-                 Content.entrevista.eixo[eixoIndex].observacoes = value;
+                  Content.entrevista.eixo[eixoIndex].observacoes = value;
                 });
               }
               //controller: controller,
@@ -84,24 +87,32 @@ class _EixoState extends State<EixoScreen>
         ),
       ),
     );
-    if(createSave){
+    if (createSave) {
       result.add(
         Container(
           child: Center(
             child: RaisedButton.icon(
               onPressed: () {
-                print("running");
+                //print("running");
                 Content.entrevista.end();
                 String csv = Content.entrevista.toCsv(";");
                 Utils.write(csv,
                         "${Utils.getInitials(Content.entrevista.pessoa.nome)}_${Utils.getInitials(Content.entrevista.pessoa.trabalho)}_${Content.entrevista.pessoa.dataNascimentoText()}_;.csv")
-                    .then(Scaffold.of(context).showSnackBar(SnackBar(
+                    .then((bool value) {
+                  if (value) {
+                    Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text("Questionário salvo!!"),
-                    )))
-                    .catchError(Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text("erro ao salvar questionário!!!!!!", style: TextStyle(color: Colors.red),),
+                    ));
+                  } else {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                        "erro ao salvar questionário!!!!!!",
+                        style: TextStyle(color: Colors.red),
+                      ),
                       backgroundColor: Color.fromRGBO(200, 0, 0, 1),
-                    )));
+                    ));
+                  }
+                });
               },
               icon: Icon(Icons.save),
               label: Text('Salvar Formulário'),
@@ -119,9 +130,10 @@ class _EixoState extends State<EixoScreen>
             child: RaisedButton.icon(
               onPressed: () {
                 Content.reset();
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/home', (Route<dynamic> route) => false);
               },
               icon: Icon(Icons.power_settings_new),
               label: Text('PÁGINA INICIAL'),
@@ -149,16 +161,18 @@ class _EixoState extends State<EixoScreen>
         margin: EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 2),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color:Content.entrevista.eixo[eixoIndex].tema[index].cor,
+          color: Content.entrevista.eixo[eixoIndex].tema[index].cor,
         ),
         child: Center(
           child: Text(
-           Content.entrevista.eixo[eixoIndex].tema[index].nome,
+            Content.entrevista.eixo[eixoIndex].tema[index].nome,
             style: TextStyle(
                 color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
           ),
         )));
-    for (int x = 0; x <Content.entrevista.eixo[eixoIndex].tema[index].questao.length; x++) {
+    for (int x = 0;
+    x < Content.entrevista.eixo[eixoIndex].tema[index].questao.length;
+    x++) {
       result.add(buildPergunta("${index + 1}.${x + 1})", index, x));
     }
     return new Column(children: result);
@@ -168,7 +182,7 @@ class _EixoState extends State<EixoScreen>
     return new Container(
       margin: EdgeInsets.only(right: 10, left: 10, top: 2, bottom: 5),
       decoration: BoxDecoration(
-        color:Content.entrevista.eixo[eixoIndex].tema[indexTema].corPergunta,
+        color: Content.entrevista.eixo[eixoIndex].tema[indexTema].corPergunta,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -191,11 +205,12 @@ class _EixoState extends State<EixoScreen>
               children: <Widget>[
                 new Radio(
                   value: 0,
-                  groupValue:
-                     Content.entrevista.eixo[eixoIndex].tema[indexTema].questao[indexPergunta].resposta,
+                  groupValue: Content.entrevista.eixo[eixoIndex].tema[indexTema]
+                      .questao[indexPergunta].resposta,
                   onChanged: (T) {
                     setState(() {
-                     Content.entrevista.eixo[eixoIndex].tema[indexTema].questao[indexPergunta].resposta = T;
+                      Content.entrevista.eixo[eixoIndex].tema[indexTema]
+                          .questao[indexPergunta].resposta = T;
                     });
                   },
                 ),
@@ -208,11 +223,12 @@ class _EixoState extends State<EixoScreen>
                 ),
                 new Radio(
                   value: 1,
-                  groupValue:
-                     Content.entrevista.eixo[eixoIndex].tema[indexTema].questao[indexPergunta].resposta,
+                  groupValue: Content.entrevista.eixo[eixoIndex].tema[indexTema]
+                      .questao[indexPergunta].resposta,
                   onChanged: (T) {
                     setState(() {
-                     Content.entrevista.eixo[eixoIndex].tema[indexTema].questao[indexPergunta].resposta = T;
+                      Content.entrevista.eixo[eixoIndex].tema[indexTema]
+                          .questao[indexPergunta].resposta = T;
                     });
                   },
                 ),
@@ -227,11 +243,12 @@ class _EixoState extends State<EixoScreen>
                 ),
                 new Radio(
                   value: 2,
-                  groupValue:
-                     Content.entrevista.eixo[eixoIndex].tema[indexTema].questao[indexPergunta].resposta,
+                  groupValue: Content.entrevista.eixo[eixoIndex].tema[indexTema]
+                      .questao[indexPergunta].resposta,
                   onChanged: (T) {
                     setState(() {
-                     Content.entrevista.eixo[eixoIndex].tema[indexTema].questao[indexPergunta].resposta = T;
+                      Content.entrevista.eixo[eixoIndex].tema[indexTema]
+                          .questao[indexPergunta].resposta = T;
                     });
                   },
                 ),
@@ -244,11 +261,12 @@ class _EixoState extends State<EixoScreen>
                 ),
                 new Radio(
                   value: 3,
-                  groupValue:
-                     Content.entrevista.eixo[eixoIndex].tema[indexTema].questao[indexPergunta].resposta,
+                  groupValue: Content.entrevista.eixo[eixoIndex].tema[indexTema]
+                      .questao[indexPergunta].resposta,
                   onChanged: (T) {
                     setState(() {
-                     Content.entrevista.eixo[eixoIndex].tema[indexTema].questao[indexPergunta].resposta = T;
+                      Content.entrevista.eixo[eixoIndex].tema[indexTema]
+                          .questao[indexPergunta].resposta = T;
                     });
                   },
                 ),
@@ -261,11 +279,12 @@ class _EixoState extends State<EixoScreen>
                 ),
                 new Radio(
                   value: 4,
-                  groupValue:
-                     Content.entrevista.eixo[eixoIndex].tema[indexTema].questao[indexPergunta].resposta,
+                  groupValue: Content.entrevista.eixo[eixoIndex].tema[indexTema]
+                      .questao[indexPergunta].resposta,
                   onChanged: (T) {
                     setState(() {
-                     Content.entrevista.eixo[eixoIndex].tema[indexTema].questao[indexPergunta].resposta = T;
+                      Content.entrevista.eixo[eixoIndex].tema[indexTema]
+                          .questao[indexPergunta].resposta = T;
                     });
                   },
                 ),

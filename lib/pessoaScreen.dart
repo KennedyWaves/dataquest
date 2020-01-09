@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'content.dart';
 
 class PessoaScreen extends StatefulWidget {
@@ -41,7 +42,7 @@ class _PessoaState extends State<PessoaScreen>
       this._selectedGenero = value;
     });
     Content.entrevista.pessoa.genero = value;
-    print(Content.entrevista.pessoa.genero);
+    //print(Content.entrevista.pessoa.genero);
   }
 
   void _formacaoOnDropDown(String value) {
@@ -49,7 +50,7 @@ class _PessoaState extends State<PessoaScreen>
       this._selectedFormacao = value;
     });
     Content.entrevista.pessoa.formacao = value;
-    print(Content.entrevista.pessoa.formacao);
+    //print(Content.entrevista.pessoa.formacao);
   }
 
   var dnController = new TextEditingController();
@@ -77,7 +78,7 @@ class _PessoaState extends State<PessoaScreen>
                       onChanged: (String value) {
                         setState(() {
                           Content.entrevista.pessoa.nome = value;
-                          print(Content.entrevista.pessoa.nome);
+                          //print(Content.entrevista.pessoa.nome);
                         });
                       },
                       //controller: controller,
@@ -151,7 +152,7 @@ class _PessoaState extends State<PessoaScreen>
                         onChanged: (String value) {
                           setState(() {
                             Content.entrevista.pessoa.trabalho = value;
-                            print(Content.entrevista.pessoa.trabalho);
+                            //print(Content.entrevista.pessoa.trabalho);
                           });
                         }
                       //controller: controller,
@@ -193,7 +194,7 @@ class _PessoaState extends State<PessoaScreen>
                         onChanged: (String value) {
                           setState(() {
                             Content.entrevista.pessoa.localidade = value;
-                            print(Content.entrevista.pessoa.localidade);
+                            //print(Content.entrevista.pessoa.localidade);
                           });
                         }
                       //controller: controller,
