@@ -1,4 +1,4 @@
-package waves.dataquest
+package com.waves.dataquest
 
 import android.os.Bundle
 
