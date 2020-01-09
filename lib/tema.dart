@@ -1,16 +1,18 @@
 import 'package:dataquest/likert.dart';
 import 'package:flutter/material.dart';
 class Tema {
-  String _nome;
-  String observacoes;
-
-  String get nome => _nome;
+  String nome;
   Color cor = Colors.white;
   Color corPergunta = Colors.white;
   List<Likert> questao;
 
+  @override
+  String toString(){
+    return nome;
+  }
+
   Tema(String theme, {MaterialColor cor}) {
-    _nome = theme;
+    nome = theme;
     this.cor = cor[500] ?? this.cor;
     this.corPergunta = cor[50] ?? this.corPergunta;
     questao = <Likert>[];
@@ -28,25 +30,25 @@ class Tema {
     }
   }
 
-  String headerDoTema(){
+  String headerDoTema(String ii){
     String result = nome;
     for(int x = 0; x<questao.length-1;x++){
-      result+=";";
+      result+="$ii";
     }
     return result;
   }
 
-  String todasAsQuestoes(){
+  String todasAsQuestoes(String ii){
     String result = "";
     for(Likert likert in questao){
-      result+=likert.questao+";";
+      result+=likert.questao+"$ii";
     }
     return result;
   }
-  String todasAsRespostas(){
+  String todasAsRespostas(String ii){
     String result = "";
     for(Likert likert in questao){
-      result+=likert.resposta.toString()+";";
+      result+=likert.resposta.toString()+"$ii";
     }
     return result;
   }

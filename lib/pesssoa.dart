@@ -6,7 +6,6 @@ class Pessoa {
   String formacao = "";
   String localidade = "";
   String genero = "";
-  String observacoes = "";
   DateFormat _dateFormat = DateFormat("dd/MM/yyyy");
   DateTime dataNascimento;
 

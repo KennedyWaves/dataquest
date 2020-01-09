@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'splash.dart';
-import 'home.dart';
-import 'TelaQuestionario.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'entrevistaScreen.dart';
+import 'homeScreen.dart';
+import 'splash.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -12,10 +13,10 @@ void main() {
       GlobalWidgetsLocalizations.delegate
     ],
     supportedLocales: [const Locale('pt', 'BR')],
-    home: new splash(),
+    home: new Splash(),
     routes: <String, WidgetBuilder>{
-      '/home': (BuildContext context) => new Home(),
-      '/question': (BuildContext context) => new TelaDeQuestionario(),
+      '/home': (BuildContext context) => new HomeScreen(),
+      '/question': (BuildContext context) => new EntrevistaScreen(),
     },
   ));
 }
