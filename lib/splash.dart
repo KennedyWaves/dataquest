@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 
 import 'homeScreen.dart';
@@ -50,6 +50,7 @@ class SplashState extends State<Splash> {
 
   onDoneLoading() async {
     HomeState.permissionStatus = await HomeState.askPermission();
+    //FirebaseApp.initializeApp(this);
     Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => HomeScreen()));
     Navigator.of(context)
