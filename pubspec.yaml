@@ -24,7 +24,8 @@ dependencies:
   intl: ^0.16.0
   firebase_storage: ^3.0.3
   flutter:
-    sdk: flutter   
+    sdk: flutter
+  flushbar: ^1.5.0
   flutter_localizations:
     sdk: flutter
   

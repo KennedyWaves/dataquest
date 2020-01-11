@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'utils.dart';
 
 class QuestFile {
-  static List<QuestFile> outbox = <QuestFile>[];
+  static List<QuestFile> outboxObjects = <QuestFile>[];
   bool enviado;
   String nome;
   String profissao;
@@ -26,15 +26,18 @@ class QuestFile {
     List<String> lines = ls.convert(content);
     //selecionar ultima linha
     String lastLine = lines[3];
+    //identificar se já foi enviado
+    bool sent = false;
+    if (filename.indexOf("§¬") > -1) {
+      sent = true;
+    }
     //obter separador
     String splitter = filename[filename.length - 5];
     //print("separador encontrado $splitter");
     //dividir a ultima linha em separadores
     var values = lastLine.split(splitter);
-    bool sent = false;
-    if (filename.indexOf("§¬") > -1) {
-      sent = true;
-    }
+    print("separator found ((((( $splitter )))");
+
     //preencher o objeto result;
     return new QuestFile(
         nome: values[0],

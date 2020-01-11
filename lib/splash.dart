@@ -49,6 +49,7 @@ class SplashState extends State<Splash> {
   }
 
   onDoneLoading() async {
+    //FirebaseApp.initializeApp(this);
     HomeState.permissionStatus = await HomeState.askPermission();
     Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => HomeScreen()));

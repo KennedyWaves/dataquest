@@ -7,19 +7,21 @@ import 'utils.dart';
 class EixoScreen extends StatefulWidget {
   final int eixoIndex;
   final bool createSave;
+  final Function update;
 
-  EixoScreen(this.eixoIndex, [this.createSave]);
+  EixoScreen(this.eixoIndex, [this.createSave, this.update]);
 
   @override
-  State createState() => new _EixoState(eixoIndex, createSave);
+  State createState() => new _EixoState(eixoIndex, createSave, update);
 }
 
 class _EixoState extends State<EixoScreen>
     with AutomaticKeepAliveClientMixin<EixoScreen> {
   int eixoIndex;
   bool createSave;
+  Function update;
 
-  _EixoState(this.eixoIndex, [this.createSave]);
+  _EixoState(this.eixoIndex, [this.createSave, this.update]);
 
   //constrói a tela do questionário/eixo
   Scaffold buildEixo() {
@@ -92,17 +94,21 @@ class _EixoState extends State<EixoScreen>
         Container(
           child: Center(
             child: RaisedButton.icon(
-              onPressed: () {
+              onPressed: () async {
                 //print("running");
                 Content.entrevista.end();
                 String csv = Content.entrevista.toCsv(";");
-                Utils.write(csv,
-                        "${Utils.getInitials(Content.entrevista.pessoa.nome)}_${Utils.getInitials(Content.entrevista.pessoa.trabalho)}_${Content.entrevista.pessoa.dataNascimentoText()}_;.csv")
-                    .then((bool value) {
+                bool value = await Utils.write(csv,
+                    "${Utils.getInitials(
+                        Content.entrevista.pessoa.nome)}_${Utils.getInitials(
+                        Content.entrevista.pessoa.trabalho)}_${Content
+                        .entrevista.pessoa.dataNascimentoText()}_;.csv");
+                print("write result of $value");
                   if (value) {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text("Questionário salvo!!"),
                     ));
+                    update();
                   } else {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(
@@ -112,7 +118,6 @@ class _EixoState extends State<EixoScreen>
                       backgroundColor: Color.fromRGBO(200, 0, 0, 1),
                     ));
                   }
-                });
               },
               icon: Icon(Icons.save),
               label: Text('Salvar Formulário'),
