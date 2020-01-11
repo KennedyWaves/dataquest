@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:path/path.dart' as p;
+
 import 'package:dataquest/questFile.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -162,15 +161,12 @@ class HomeState extends State<HomeScreen> {
   }
 
   void uploadFiles() async {
-    final directory = await getExternalStorageDirectory();
     for (QuestFile otbXList in QuestFile.outbox) {
       if (!otbXList.marcado) {
         continue;
       }
-      otbXList.nomeArquivo='${directory.path}${Content.folderPath}/${otbXList.nomeArquivo}';
-      File current = new File('${otbXList.nomeArquivo}');
-      print("CAMINHO CURRENT${otbXList.nomeArquivo}");
-      StorageReference storageReference = FirebaseStorage.instance
+      File current = new File(otbXList.nomeArquivo);
+      /* StorageReference storageReference = FirebaseStorage.instance
           .ref()
           .child('quests/${p.basename(otbXList.nomeArquivo)}');
       StorageUploadTask uploadTask = storageReference.putFile(current);
@@ -182,12 +178,13 @@ class HomeState extends State<HomeScreen> {
             loadOutbox();
           });
         });
-      });
+      });*/
     }
   }
 
   FloatingActionButton uploadButtonHolder;
   FloatingActionButton uploadButton;
+
   Scaffold homePage;
 
   @override
