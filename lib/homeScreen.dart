@@ -2,7 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dataquest/questFile.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -87,29 +90,35 @@ class HomeState extends State<HomeScreen> {
 
   List<Widget> outboxList = <Widget>[];
 
-  void loadOutbox() async {
-    QuestFile.outbox = <QuestFile>[];
-    print("runningoutbox");
+  Future<bool> loadOutbox() async {
+    print("CALLED LOAD OUTBOX");
+    List<QuestFile> outboxOfLoad = <QuestFile>[];
     final directory = await getExternalStorageDirectory();
     final dir = Directory('${directory.path}${Content.folderPath}');
     //print(dir.existsSync());    // <---- it also print: false
     List<FileSystemEntity> files = dir.listSync().toList();
-    List<String> paths = <String>[];
-    files.forEach((f) => paths.add(f.path));
-    for (String questPath in paths) {
-      if (questPath.indexOf(".csv") < 0) {
+    for (File questFile in files) {
+      print("file found ${questFile.path}");
+      if (questFile.path.indexOf(".csv") < 0 ||
+          questFile.path.indexOf("§¬") > -1) {
         continue;
       }
-      List<String> splitPath = questPath.split("/");
       var questItem = await QuestFile.loadQuestFile(
-          splitPath[splitPath.length - 1], sobeBotao);
-      QuestFile.outbox.add(questItem);
+          questFile.path, sobeBotao);
+      outboxOfLoad.add(questItem);
     }
+    QuestFile.outboxObjects = outboxOfLoad;
+    return Future.value(true);
+  }
+
+  void atualizaOutbox() async {
+    await loadOutbox();
+    buildOutbox();
   }
 
   bool alguemMarcado() {
-    for (int x = 0; x < QuestFile.outbox.length; x++) {
-      if (QuestFile.outbox[x].marcado) {
+    for (int x = 0; x < QuestFile.outboxObjects.length; x++) {
+      if (QuestFile.outboxObjects[x].marcado) {
         return true;
       }
     }
@@ -131,20 +140,21 @@ class HomeState extends State<HomeScreen> {
   }
 
   void buildOutbox() {
+    print("CHAMADO BUILD OUTBOX");
     if (permissionStatus == PermissionStatus.granted) {
       outboxList = <Widget>[];
-      for (int x = 0; x < QuestFile.outbox.length; x++) {
+      for (int x = 0; x < QuestFile.outboxObjects.length; x++) {
         outboxList.add(new ListTile(
           onTap: () {},
           title: new Row(
             children: <Widget>[
-              new Expanded(child: new Text(QuestFile.outbox[x].nome)),
+              new Expanded(child: new Text(QuestFile.outboxObjects[x].nome)),
               new Checkbox(
-                  value: QuestFile.outbox[x].marcado,
+                  value: QuestFile.outboxObjects[x].marcado,
                   onChanged: (bool value) {
                     setState(() {
                       print("valor $value");
-                      QuestFile.outbox[x].marcado = value;
+                      QuestFile.outboxObjects[x].marcado = value;
                       sobeBotao();
                     });
                   })
@@ -161,24 +171,46 @@ class HomeState extends State<HomeScreen> {
   }
 
   void uploadFiles() async {
-    for (QuestFile otbXList in QuestFile.outbox) {
+    Flushbar(
+      message: 'Enviando...',
+      duration: Duration(seconds: 3),
+      // Show it with a cascading operator
+    ).show(context);
+    final directory = await getExternalStorageDirectory();
+    for (QuestFile otbXList in QuestFile.outboxObjects) {
       if (!otbXList.marcado) {
         continue;
       }
       File current = new File(otbXList.nomeArquivo);
-      /* StorageReference storageReference = FirebaseStorage.instance
+      print("CAMINHO CURRENT${otbXList.nomeArquivo}");
+      StorageReference storageReference = FirebaseStorage.instance
           .ref()
           .child('quests/${p.basename(otbXList.nomeArquivo)}');
       StorageUploadTask uploadTask = storageReference.putFile(current);
       uploadTask.onComplete.then((value){
         print('File Uploaded');
         storageReference.getDownloadURL().then((fileUrl) async {
-          await current.rename('${p.basename(otbXList.nomeArquivo)}'.replaceAll(".csv","§¬.csv"));
+          await current.rename('${otbXList.nomeArquivo}'.replaceAll(
+              p.basename(otbXList.nomeArquivo),
+              '§¬${p.basename(otbXList.nomeArquivo)}'));
+          await loadOutbox();
           setState(() {
-            loadOutbox();
+            buildOutbox();
           });
+          Flushbar(
+            message: 'Enviado com sucesso!',
+            duration: Duration(seconds: 3),
+            // Show it with a cascading operator
+          ).show(context);
+        }).catchError((error, stack) {
+          Flushbar(
+            message: 'Enviando...',
+            backgroundColor: Colors.red,
+            duration: Duration(seconds: 3),
+            // Show it with a cascading operator
+          ).show(context);
         });
-      });*/
+      });
     }
   }
 
@@ -186,7 +218,7 @@ class HomeState extends State<HomeScreen> {
   FloatingActionButton uploadButton;
 
   Scaffold homePage;
-
+  static Function bridge;
   @override
   void initState() {
     super.initState();
@@ -194,6 +226,7 @@ class HomeState extends State<HomeScreen> {
     if (permissionStatus == PermissionStatus.granted) {
       loadOutbox();
     }
+    bridge = atualizaOutbox;
   }
 
   @override

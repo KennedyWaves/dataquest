@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'content.dart';
 import 'eixoScreen.dart';
+import 'homeScreen.dart';
 import 'pessoaScreen.dart';
 
 Content content;
@@ -46,7 +47,7 @@ class EntrevistaState extends State<EntrevistaScreen> {
             PessoaScreen(),
             EixoScreen(0),
             EixoScreen(1),
-            EixoScreen(2,true),
+            EixoScreen(2, true, HomeState.bridge),
           ],
         ),
       ),

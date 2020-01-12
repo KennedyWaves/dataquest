@@ -28,7 +28,7 @@ class Utils {
         await Directory('${directory.path}${Content.folderPath}').exists();
         Future<String> carrega() async {
           //print('LOCATION ${directory.path}${Content.folderPath}');
-          final file = File('${directory.path}${Content.folderPath}/$filename');
+          final file = File('$filename');
           String contents = await file.readAsString();
           //print("CARALHO IT HAS BEEN READ!");
           //print("conteudo lido $contents");
@@ -67,34 +67,31 @@ class Utils {
 
   static Future<bool> write(String text, String filename) async {
     filename = filename.replaceAll("/", "-");
-    //print("writing...");
+    print("writing...");
     PermissionStatus status = await PermissionHandler()
         .checkPermissionStatus(PermissionGroup.storage);
-    //print("SELECT");
+    bool result = false; //print("SELECT");
     switch (status) {
       case PermissionStatus.granted:
         final directory = await getExternalStorageDirectory();
         bool exists =
         await Directory('${directory.path}${Content.folderPath}').exists();
-        void save() async {
+        Future<bool> save() async {
           //print('LOCATION ${directory.path}${Content.folderPath}');
           final file = File('${directory.path}${Content.folderPath}/$filename');
-          await file.writeAsString(text, mode: FileMode.write)
-              .whenComplete(() {});
-
+          File resultFile = await file.writeAsString(text, mode: FileMode
+              .write); //.whenComplete((){result=true;}).catchError((e, stack){print(e.toString());result= false;});
+          if (resultFile.lengthSync() > 0) {
+            result = true;
+          }
+          return Future.value(result);
           //print("CARALHO SAVED!");
         }
         if (!exists) {
-          new Directory('${directory.path}${Content.folderPath}')
-              .create(recursive: true)
-              // The created directory is returned as a Future.
-              .then((Directory directory) {
-            //print(directory.path);
-            save();
-          });
-        } else {
-          save();
+          await new Directory('${directory.path}${Content.folderPath}').create(
+              recursive: true);
         }
+        return await save();
         break;
       case PermissionStatus.denied:
         // do something
@@ -112,7 +109,7 @@ class Utils {
       //print(status);
         break;
     }
-    return false;
+    return Future.value(result);
   }
 
   static double filter(double value, {double maximum, double minimum}) {

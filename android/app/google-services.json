@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "473826973247",
+    "firebase_url": "https://dataquest-95aa4.firebaseio.com",
+    "project_id": "dataquest-95aa4",
+    "storage_bucket": "dataquest-95aa4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473826973247:android:d5563acb9cf58689d40a8a",
+        "android_client_info": {
+          "package_name": "com.waves.dataquest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473826973247-bubmi42bahehs4gprslq97qi31t0u5qs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.waves.dataquest",
+            "certificate_hash": "3ccd55f600bc12557f2f75ba26a4f894bbdb1a3e"
+          }
+        },
+        {
+          "client_id": "473826973247-bcne52tln1svod4otiq1ada0glmj9n5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3toR7HaX1P1xtwioxfGLjgFiUYc5OHeo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473826973247-bcne52tln1svod4otiq1ada0glmj9n5m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
